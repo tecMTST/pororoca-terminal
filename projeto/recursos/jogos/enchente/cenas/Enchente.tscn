@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://recursos/jogos/enchente/chefao/ChamadaDoBoss.tscn" type="PackedScene" id=16]
 [ext_resource path="res://recursos/contador/contador.tscn" type="PackedScene" id=17]
 [ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=18]
+[ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=19]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -25,7 +26,7 @@
 shader = ExtResource( 3 )
 shader_param/Velocidade = 1.0
 
-[node name="Enchente" type="Spatial"]
+[node name="Enchente" type="Spatial" groups=["Enchente"]]
 script = ExtResource( 14 )
 
 [node name="TempoDeJogo" type="Timer" parent="."]
@@ -138,12 +139,14 @@ anchor_bottom = 1.0
 theme = ExtResource( 7 )
 
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 4 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -172.0
-margin_top = 100.0
-margin_right = -172.0
-margin_bottom = 180.0
+anchor_left = 0.383
+anchor_top = 0.5
+anchor_right = 0.383
+anchor_bottom = 0.5
+margin_left = -64.76
+margin_top = -540.0
+margin_right = -64.76
+margin_bottom = -460.0
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )
@@ -196,6 +199,7 @@ bus = "SFX Game"
 [node name="ChamadaDoBoss" parent="." instance=ExtResource( 16 )]
 
 [node name="Contador" parent="." instance=ExtResource( 17 )]
-visible = false
+
+[node name="BotaoMenu" parent="." instance=ExtResource( 19 )]
 
 [connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]

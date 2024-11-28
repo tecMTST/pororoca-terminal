@@ -25,11 +25,7 @@ script = ExtResource( 7 )
 [node name="Transparencia" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1529.0
-margin_top = -775.0
-margin_right = 1872.0
-margin_bottom = 539.0
-color = Color( 0.0862745, 0.0862745, 0.0862745, 0.752941 )
+color = Color( 0.0862745, 0.0862745, 0.0862745, 0.94902 )
 
 [node name="Menu" type="TextureRect" parent="."]
 pause_mode = 2

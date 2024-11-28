@@ -1,0 +1,64 @@
+name: Release de produção no itch.io
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "itch.io"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: nawarian/godot-ci:3.6-beta4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        env:
+          HOME: /root
+        working-directory: ./projeto
+        run: |
+          apt update && apt install -y zip
+
+          mkdir -v -p exportados/web
+          godot --no-window --verbose --path $(pwd)/projeto/ --export "HTML5" $(pwd)/exportados/web/index.html
+
+          zip -r build.zip exportados/web/
+          rm -rf exportados/web
+
+          mkdir build/
+          mv build.zip build/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build.zip
+          path: ./projeto/build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    container:
+      image: nawarian/butler:latest
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build.zip
+          path: .
+
+      - name: Publish to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+        run: |
+          /app/butler push build.zip ntmtst/pororoca-terminal:html5
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/Clouds_BG.png" type="Texture" id=1]
 [ext_resource path="res://elementos/UI/botao_jogar_pressed.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://recursos/jogos/enchente/abertura/CutsceneBase.tscn" type="PackedScene" id=22]
 [ext_resource path="res://elementos/UI/botao_jogar_hover.png" type="Texture" id=23]
 [ext_resource path="res://elementos/audio/sfx/hud-clique.mp3" type="AudioStream" id=24]
+[ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=25]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -99,40 +100,31 @@ bus = "SFX Menu"
 [node name="Background" type="CanvasLayer" parent="."]
 
 [node name="Bg_3" type="TextureRect" parent="Background"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -1330.0
-margin_top = -772.0
-margin_right = 1331.0
-margin_bottom = 793.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 21 )
+expand = true
 stretch_mode = 1
 
 [node name="Bg_2" type="TextureRect" parent="Background"]
 material = SubResource( 2 )
-anchor_left = 0.5
-anchor_top = 0.233
-anchor_right = 0.5
-anchor_bottom = 0.233
-margin_left = -1631.0
-margin_top = -352.24
-margin_right = 1653.0
-margin_bottom = 501.76
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1652.0
+margin_top = -54.0
+margin_right = 1722.0
+margin_bottom = -416.0
 texture = ExtResource( 1 )
+expand = true
 stretch_mode = 6
 
 [node name="Bg_1" type="TextureRect" parent="Background"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -1336.0
-margin_top = -771.0
-margin_right = 1336.0
-margin_bottom = 786.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 4 )
+expand = true
 stretch_mode = 1
 
 [node name="Logo" type="TextureRect" parent="Background"]
@@ -149,14 +141,14 @@ texture = ExtResource( 6 )
 stretch_mode = 6
 
 [node name="Titulo" type="TextureRect" parent="Background"]
-anchor_left = 0.506
-anchor_top = 0.31
-anchor_right = 0.506
-anchor_bottom = 0.31
-margin_left = -247.32
-margin_top = -125.8
-margin_right = 124.68
-margin_bottom = 63.2
+anchor_left = 0.501
+anchor_top = 0.395
+anchor_right = 0.501
+anchor_bottom = 0.395
+margin_left = -316.72
+margin_top = -161.6
+margin_right = 159.28
+margin_bottom = 80.4
 rect_scale = Vector2( 1.33029, 1.33029 )
 texture = ExtResource( 7 )
 stretch_mode = 6
@@ -201,6 +193,16 @@ expand = true
 stretch_mode = 5
 
 [node name="tween_jogar" type="Tween" parent="Buttons/Btn_Jogar"]
+
+[node name="BotaoMenu" parent="." instance=ExtResource( 25 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -640.0
+margin_right = 360.0
+margin_bottom = 640.0
 
 [connection signal="button_down" from="Buttons/Btn_Jogar" to="." method="_on_Btn_Jogar_button_down"]
 [connection signal="button_up" from="Buttons/Btn_Jogar" to="." method="_on_Jogar_button_up"]

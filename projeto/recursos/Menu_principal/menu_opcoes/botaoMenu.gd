@@ -2,9 +2,25 @@ extends Node
 
 onready var opcoesMenu = preload("res://recursos/Menu_principal/menu_opcoes/MenuDeOpcoes.tscn")
 onready var tween = $CanvasLayer/Menu/Tween
+onready var audio_stream_sfx = $AudioStreamSFX
+
+export(Array, StreamTexture) var img_pause
+export(Array, StreamTexture) var img_config
 
 var menuApertado: bool = false
-onready var audio_stream_sfx = $AudioStreamSFX
+
+func _ready():
+	var cena_nodes = get_tree().get_nodes_in_group("Enchente")
+	if cena_nodes:
+		print(get_tree().get_nodes_in_group("Enchente"))
+		$CanvasLayer/Menu.texture_normal = img_pause[0]
+		$CanvasLayer/Menu.texture_pressed = img_pause[1]
+		$CanvasLayer/Menu.texture_hover = img_pause[2]
+	else:
+		print(get_tree().get_nodes_in_group("Enchente"))
+		$CanvasLayer/Menu.texture_normal = img_config[0]
+		$CanvasLayer/Menu.texture_pressed = img_config[1]
+		$CanvasLayer/Menu.texture_hover = img_config[2]
 
 func _on_Menu_button_up():
 	menuApertado = true

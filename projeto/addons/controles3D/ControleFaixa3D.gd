@@ -112,7 +112,7 @@ func mover_esquerda():
 		emit_signal('iniciou_movimento', 'esquerda', alvo)
 
 func abaixar():
-	if not em_movimento and not abaixado and not pulando and not caindo:
+	if not abaixado and not pulando and not caindo:
 		abaixado = true
 		if not abaixar_infinito:
 			timerAbaixado.start()
