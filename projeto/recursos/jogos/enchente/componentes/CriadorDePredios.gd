@@ -2,7 +2,7 @@ extends Spatial
 class_name CriadorDePredios
 
 export(Array, String) var modelos = []
-export var velocidade = 10.0
+export var velocidade = 17.0
 export var quantidade_inicial = 10
 export var espacamento = 10.0
 export var deslocamento_vertical : float = 0.0
