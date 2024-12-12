@@ -3,6 +3,13 @@
 [ext_resource path="res://addons/sistema_vida/interface/vida_icones.gd" type="Script" id=1]
 
 [node name="VidaIcones" type="Control"]
+<<<<<<< HEAD
+=======
+anchor_top = 0.031
+anchor_bottom = 0.031
+margin_top = -39.68
+margin_bottom = -39.68
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 rect_min_size = Vector2( 0, 80 )
 script = ExtResource( 1 )
 
@@ -11,5 +18,9 @@ anchor_top = 0.312
 anchor_bottom = 0.312
 margin_top = -24.96
 margin_bottom = 25.04
+<<<<<<< HEAD
 grow_horizontal = 2
+=======
+grow_horizontal = 0
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 grow_vertical = 2

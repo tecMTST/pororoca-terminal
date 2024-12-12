@@ -1,33 +1,69 @@
+<<<<<<< HEAD
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=1]
 [ext_resource path="res://elementos/audio/bgm/jogo/lv1-surf.mp3" type="AudioStream" id=2]
 [ext_resource path="res://elementos/imagem/enchente/rosto-senhora.png" type="Texture" id=3]
+=======
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=1]
+[ext_resource path="res://elementos/audio/bgm/jogo/lv1-surf.mp3" type="AudioStream" id=2]
+[ext_resource path="res://elementos/UI/icone_toalha_default.png" type="Texture" id=3]
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 [ext_resource path="res://elementos/imagem/enchente/background_skyline.png" type="Texture" id=4]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://elementos/audio/bgm/jogo/amb-correnteza.mp3" type="AudioStream" id=6]
 [ext_resource path="res://recursos/jogos/enchente/componentes/CriadorDePredios.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/sistema_vida/interface/vida_icones.tscn" type="PackedScene" id=8]
+<<<<<<< HEAD
+=======
+[ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=9]
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 [ext_resource path="res://elementos/scripts/ScriptsBackgroundCidadeSubindo/cidadeSubindo.gd" type="Script" id=10]
 [ext_resource path="res://elementos/modelos/skybox/skyboxNuvens.tscn" type="PackedScene" id=11]
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=12]
 [ext_resource path="res://recursos/jogos/enchente/chefao/Chefao.tscn" type="PackedScene" id=14]
+<<<<<<< HEAD
+=======
+[ext_resource path="res://recursos/jogos/enchente/chefao/ChamadaDoBoss.tscn" type="PackedScene" id=15]
+[ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=16]
+[ext_resource path="res://recursos/contador/contador.tscn" type="PackedScene" id=17]
+[ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=18]
+[ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=19]
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends Spatial
 
+<<<<<<< HEAD
+=======
+# Tempo de jogo em minutos
+export var tempo_jogo = 5
+
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 onready var player_lane_3d = $playerLane3D as PlayerLane3D
 onready var faixa_1 = $Faixas/Faixa1
 onready var faixa_2 = $Faixas/Faixa2
 onready var faixa_3 = $Faixas/Faixa3
 onready var fps_label = $CanvasLayer/Control/HBoxContainer/FpsLabel
+<<<<<<< HEAD
 onready var agua = $Agua
+=======
+onready var tempo_label = $CanvasLayer/Control/HBoxContainer/Tempo
+onready var agua = $Agua
+onready var audio_stream_bgm := $AudioStreamBGM
+onready var audio_stream_amb := $AudioStreamAMB
+
+var _volume_atual = 999
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_1.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_2.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
 	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
+<<<<<<< HEAD
 	
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
@@ -67,10 +103,75 @@ fov = 84.375
 
 [node name="Listener" type="Listener" parent="Camera"]
 current = true
+=======
+
+	$Contador.visible = true
+	$Contador/Animador.play(\"aproximar\")
+	yield($Contador/Animador, 'animation_finished')
+
+	EnchenteEstadoDeJogo.reset()
+	EnchenteEstadoDeJogo.TemporizadorGlobal = $TempoDeJogo
+	EnchenteEstadoDeJogo.definir_tempo_de_jogo(tempo_jogo * 60)
+	EnchenteEstadoDeJogo.iniciar_temporizador()
+	EnchenteEstadoDeJogo.set_process(true)
+	EnchenteEstadoDeJogo.connect('trocou_fase', self, \"_trocou_fase\")
+	audio_stream_bgm.play()
+
+func _process(_delta):
+	fps_label.text = str(Engine.get_frames_per_second())
+	tempo_label.text = String(EnchenteEstadoDeJogo.TempoAtual)
+	agua.get_active_material(0).set_shader_param(\"Velocidade\", EnchenteEstadoDeJogo.VelocidadeGlobal)
+
+func _exit_tree() -> void:
+	EnchenteEstadoDeJogo.set_process(false)
+
+func _trocou_fase(fase):
+	if fase == 3:
+		$ControladorDeObstaculos.parar()
+		$ChamadaDoBoss.iniciar()
+	audio_stream_bgm.mudar_musica(str(fase))
+"
+
+[sub_resource type="PlaneMesh" id=8]
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 12 )
+shader_param/Velocidade = 1.0
+
+[node name="Enchente" type="Spatial" groups=["Enchente"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0167294, -0.0322146, 0.00546646 )
+script = SubResource( 7 )
+
+[node name="Chefao" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.216507 )
+
+[node name="TempoDeJogo" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
+
+[node name="Agua" type="MeshInstance" parent="."]
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, 0, 0, 1 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Agua2" type="MeshInstance" parent="."]
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, 0, 0, -49 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 7, 27 )
+doppler_tracking = 2
+current = true
+fov = 103.0
+
+[node name="Listener" type="Listener" parent="Camera"]
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="Paredes" type="Spatial" parent="."]
 
 [node name="CriadorPredios" parent="Paredes" instance=ExtResource( 7 )]
+<<<<<<< HEAD
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -72.887 )
 modelos = [ "res://recursos/jogos/enchente/componentes/predio1.tscn", "res://recursos/jogos/enchente/componentes/predio2.tscn" ]
 deslocamento_vertical = -1.0
@@ -86,15 +187,38 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248524 )
 
 [node name="Faixa1" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 22.727 )
+=======
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -72.887 )
+modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn", "res://recursos/jogos/enchente/componentes/predio-2-t.tscn", "res://recursos/jogos/enchente/componentes/predio-3-t.tscn", "res://recursos/jogos/enchente/componentes/predio-4-t.tscn", "res://recursos/jogos/enchente/componentes/predio-5-t.tscn" ]
+espacamento = 12.0
+deslocamento_vertical = -0.5
+
+[node name="CriadorPredios2" parent="Paredes" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -72.887 )
+modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn", "res://recursos/jogos/enchente/componentes/predio-2-t.tscn", "res://recursos/jogos/enchente/componentes/predio-3-t.tscn", "res://recursos/jogos/enchente/componentes/predio-4-t.tscn", "res://recursos/jogos/enchente/componentes/predio-5-t.tscn" ]
+espacamento = 12.0
+deslocamento_vertical = -0.5
+inverter_x = true
+
+[node name="Faixas" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406976, 0.248524 )
+
+[node name="Faixa1" type="Position3D" parent="Faixas"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 22.727 )
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="Faixa2" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.7269 )
 
 [node name="Faixa3" type="Position3D" parent="Faixas"]
+<<<<<<< HEAD
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22.727 )
 
 [node name="OrigemObstaculos" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25053, -56.9395 )
+=======
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 22.727 )
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="playerLane3D" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458483, 22.8555 )
@@ -102,12 +226,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458483, 22.8555 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+<<<<<<< HEAD
 margin_right = 361.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
 margin_right = 360.0
 margin_bottom = 40.0
+=======
+margin_left = 15.0
+margin_top = 54.0
+margin_right = 376.0
+margin_bottom = 94.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+margin_top = 75.0
+margin_right = 360.0
+margin_bottom = 115.0
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
 margin_top = 4.0
@@ -119,6 +255,7 @@ text = "FPS: "
 [node name="FpsLabel" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
 margin_left = 61.0
 margin_top = 4.0
+<<<<<<< HEAD
 margin_right = 118.0
 margin_bottom = 35.0
 theme = ExtResource( 1 )
@@ -133,6 +270,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.9533 )
 
 [node name="CollisionShape" type="CollisionShape" parent="AreaColetoraObstaculos"]
 shape = SubResource( 6 )
+=======
+margin_right = 103.0
+margin_bottom = 35.0
+theme = ExtResource( 1 )
+text = "000"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
+margin_left = 107.0
+margin_top = 4.0
+margin_right = 197.0
+margin_bottom = 35.0
+theme = ExtResource( 1 )
+text = "Tempo: "
+
+[node name="Tempo" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
+margin_left = 201.0
+margin_top = 4.0
+margin_right = 264.0
+margin_bottom = 35.0
+theme = ExtResource( 1 )
+text = "0.000"
+
+[node name="BarraDeProgresso" parent="." instance=ExtResource( 16 )]
+tempo = NodePath("../TempoDeJogo")
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="SeguraVida" type="Control" parent="."]
 anchor_right = 1.0
@@ -140,6 +302,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 8 )]
+<<<<<<< HEAD
 anchor_left = 0.5
 anchor_right = 0.5
 margin_top = 100.0
@@ -151,12 +314,30 @@ tamanho_icone = 64.0
 
 [node name="skybox_nuvens" parent="." instance=ExtResource( 11 )]
 transform = Transform( 5.64013, 0, 0, 0, 7.88328, 0, 0, 0, 7.33382, -0.231674, 15.9409, -17.8614 )
+=======
+anchor_left = 0.486
+anchor_top = 0.141
+anchor_right = 0.486
+anchor_bottom = 0.141
+margin_left = 0.0799866
+margin_top = -80.48
+margin_right = 0.0799866
+margin_bottom = -0.480011
+rect_scale = Vector2( 2, 2 )
+componente_com_vida = NodePath("../../playerLane3D")
+textura_icone = ExtResource( 3 )
+tamanho_icone = 45.0
+
+[node name="skybox_nuvens" parent="." instance=ExtResource( 11 )]
+transform = Transform( 5.02657, 0, 0, 0, 4.90057, 0, 0, 0, 4.4455, -0.231674, 23.119, -10.9947 )
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="cidadesubindo" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )
 script = ExtResource( 10 )
 
 [node name="SpriteCidade" type="Sprite3D" parent="cidadesubindo"]
+<<<<<<< HEAD
 transform = Transform( 6.65691, 0, 0.0653741, 0, 5.34519, 0, -0.582988, 0, 0.746477, 0, -15, 0 )
 billboard = 1
 double_sided = false
@@ -165,6 +346,26 @@ texture = ExtResource( 4 )
 
 [node name="TimerDoTempoDeEspera" type="Timer" parent="cidadesubindo"]
 wait_time = 5.0
+=======
+transform = Transform( 8.46765, 0, 0.0831564, 0, 6.79913, 0, -0.741566, 0, 0.949525, 0, -2.5, 0 )
+use_in_baked_light = true
+lightmap_scale = 1
+pixel_size = 0.005
+billboard = 1
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = ExtResource( 4 )
+
+[node name="SpriteCidade2" type="Sprite3D" parent="cidadesubindo"]
+transform = Transform( 10.7519, -0.00490382, -0.290019, 0.00675251, 9.93325, -0.000153019, 2.58632, -0.000179814, 1.20567, 19, -15, -5 )
+billboard = 1
+double_sided = false
+alpha_cut = 2
+texture = ExtResource( 18 )
+
+[node name="TimerDoTempoDeEspera" type="Timer" parent="cidadesubindo"]
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 one_shot = true
 
 [node name="Tween" type="Tween" parent="cidadesubindo"]
@@ -176,6 +377,7 @@ bus = "BGM Aux"
 
 [node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+<<<<<<< HEAD
 autoplay = true
 bus = "BGM Track"
 
@@ -183,3 +385,19 @@ bus = "BGM Track"
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.216507 )
 
 [connection signal="body_entered" from="AreaColetoraObstaculos" to="." method="_on_AreaColetoraObstaculos_body_entered"]
+=======
+bus = "BGM Track"
+script = ExtResource( 19 )
+
+[node name="AudioStreamSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = "SFX Game"
+
+[node name="ChamadaDoBoss" parent="." instance=ExtResource( 15 )]
+
+[node name="Contador" parent="." instance=ExtResource( 17 )]
+
+[node name="BotaoMenu" parent="." instance=ExtResource( 9 )]
+
+[connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)

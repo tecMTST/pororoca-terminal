@@ -7,7 +7,11 @@
 
 [node name="BombasChefe" type="KinematicBody" groups=["aereo", "minasAquaticas", "obstaculo"]]
 script = ExtResource( 1 )
+<<<<<<< HEAD
 velocidade = 30.0
+=======
+velocidade = 10.0
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

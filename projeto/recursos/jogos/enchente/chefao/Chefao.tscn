@@ -158,7 +158,11 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="OrigemObstaculos" type="Position3D" parent="."]
+<<<<<<< HEAD
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.251, 8.09071 )
+=======
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.251, 7.09421 )
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 
 [node name="Faixas" type="Node" parent="."]
 
@@ -184,12 +188,20 @@ autostart = true
 [node name="Sprites" type="Node" parent="."]
 
 [node name="Onda" type="AnimatedSprite3D" parent="Sprites"]
+<<<<<<< HEAD
 transform = Transform( 4.2353, 6.10202e-13, -1.93661e-07, 1.85131e-07, 8.09236e-15, 4.43045, 6.10202e-13, -4.2353, 8.4652e-15, 0.782015, -0.0255511, 5.67556 )
+=======
+transform = Transform( 4.2353, 6.10202e-13, -1.93661e-07, 1.85131e-07, 8.09236e-15, 4.43045, 6.10202e-13, -4.2353, 8.4652e-15, 0.782015, 0.131454, 13.0904 )
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 frames = SubResource( 3 )
 playing = true
 
 [node name="SpriteChefao" type="Sprite3D" parent="Sprites"]
+<<<<<<< HEAD
 transform = Transform( 2.09459, 4.20514e-08, 0, -4.20514e-08, 2.09459, 0, 0, 0, 2.09459, 0.426497, 1.82083, 7.23157 )
+=======
+transform = Transform( 3.31899, 6.66327e-08, 0, -6.66327e-08, 3.31899, 0, 0, 0, 3.31899, 0.426497, 1.97783, 14.6464 )
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 texture = ExtResource( 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/SpriteChefao"]

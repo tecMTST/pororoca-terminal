@@ -139,6 +139,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 7 )
 
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 4 )]
+<<<<<<< HEAD
 anchor_left = 0.383
 anchor_top = 0.5
 anchor_right = 0.383
@@ -147,6 +148,16 @@ margin_left = -64.76
 margin_top = -540.0
 margin_right = -64.76
 margin_bottom = -460.0
+=======
+anchor_left = 0.486
+anchor_top = 0.141
+anchor_right = 0.486
+anchor_bottom = 0.141
+margin_left = 0.0799866
+margin_top = -80.48
+margin_right = 0.0799866
+margin_bottom = -0.480011
+>>>>>>> e522084 (adição de todas as features requisitadas na issue)
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )
