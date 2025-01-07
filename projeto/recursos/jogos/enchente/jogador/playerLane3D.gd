@@ -161,7 +161,6 @@ func _gerar_fala_de_dano():
 	if rndbalao == lastrnd:
 		randomize()
 		rndbalao = randi() % 4 + 1
-	print(rndbalao)
 	lastrnd = rndbalao
 	BaloesDeFalha.texture = texturas[rndbalao - 1]
 	_animar_tween_balao("Aparecer")
