@@ -1,23 +1,27 @@
-[gd_scene load_steps=22 format=2]
+
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=1]
 [ext_resource path="res://elementos/audio/bgm/jogo/lv1-surf.mp3" type="AudioStream" id=2]
-[ext_resource path="res://elementos/UI/icone_toalha_default.png" type="Texture" id=3]
+[ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=3]
+
 [ext_resource path="res://elementos/imagem/enchente/background_skyline.png" type="Texture" id=4]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://elementos/audio/bgm/jogo/amb-correnteza.mp3" type="AudioStream" id=6]
 [ext_resource path="res://recursos/jogos/enchente/componentes/CriadorDePredios.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/sistema_vida/interface/vida_icones.tscn" type="PackedScene" id=8]
-[ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=9]
+
+[ext_resource path="res://recursos/contador/contador.tscn" type="PackedScene" id=9]
+
 [ext_resource path="res://elementos/scripts/ScriptsBackgroundCidadeSubindo/cidadeSubindo.gd" type="Script" id=10]
 [ext_resource path="res://elementos/modelos/skybox/skyboxNuvens.tscn" type="PackedScene" id=11]
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=12]
+[ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=13]
 [ext_resource path="res://recursos/jogos/enchente/chefao/Chefao.tscn" type="PackedScene" id=14]
-[ext_resource path="res://recursos/jogos/enchente/chefao/ChamadaDoBoss.tscn" type="PackedScene" id=15]
-[ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=16]
-[ext_resource path="res://recursos/contador/contador.tscn" type="PackedScene" id=17]
-[ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=18]
-[ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=19]
+
+[ext_resource path="res://elementos/UI/icone_toalha_default.png" type="Texture" id=15]
+[ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=16]
+[ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=17]
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends Spatial
@@ -76,8 +80,8 @@ func _trocou_fase(fase):
 shader = ExtResource( 12 )
 shader_param/Velocidade = 1.0
 
-[node name="Enchente" type="Spatial" groups=["Enchente"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0167294, -0.0322146, 0.00546646 )
+[node name="Enchente" type="Spatial"]
+
 script = SubResource( 7 )
 
 [node name="Chefao" parent="." instance=ExtResource( 14 )]
@@ -179,7 +183,8 @@ margin_bottom = 35.0
 theme = ExtResource( 1 )
 text = "0.000"
 
-[node name="BarraDeProgresso" parent="." instance=ExtResource( 16 )]
+[node name="BarraDeProgresso" parent="." instance=ExtResource( 13 )]
+
 tempo = NodePath("../TempoDeJogo")
 
 [node name="SeguraVida" type="Control" parent="."]
@@ -188,17 +193,19 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 8 )]
-anchor_left = 0.486
-anchor_top = 0.141
-anchor_right = 0.486
-anchor_bottom = 0.141
-margin_left = 0.0799866
-margin_top = -80.48
-margin_right = 0.0799866
-margin_bottom = -0.480011
+
+anchor_left = 0.383
+anchor_top = 0.5
+anchor_right = 0.383
+anchor_bottom = 0.5
+margin_left = -64.76
+margin_top = -540.0
+margin_right = -64.76
+margin_bottom = -460.0
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
-textura_icone = ExtResource( 3 )
+textura_icone = ExtResource( 15 )
+
 tamanho_icone = 45.0
 
 [node name="skybox_nuvens" parent="." instance=ExtResource( 11 )]
@@ -224,7 +231,8 @@ transform = Transform( 10.7519, -0.00490382, -0.290019, 0.00675251, 9.93325, -0.
 billboard = 1
 double_sided = false
 alpha_cut = 2
-texture = ExtResource( 18 )
+
+texture = ExtResource( 16 )
 
 [node name="TimerDoTempoDeEspera" type="Timer" parent="cidadesubindo"]
 one_shot = true
@@ -239,16 +247,15 @@ bus = "BGM Aux"
 [node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "BGM Track"
-script = ExtResource( 19 )
+
+script = ExtResource( 17 )
 
 [node name="AudioStreamSFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 bus = "SFX Game"
 
-[node name="ChamadaDoBoss" parent="." instance=ExtResource( 15 )]
+[node name="Contador" parent="." instance=ExtResource( 9 )]
 
-[node name="Contador" parent="." instance=ExtResource( 17 )]
-
-[node name="BotaoMenu" parent="." instance=ExtResource( 9 )]
+[node name="BotaoMenu" parent="." instance=ExtResource( 3 )]
 
 [connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]
