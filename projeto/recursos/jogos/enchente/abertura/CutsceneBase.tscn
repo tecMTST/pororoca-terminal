@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco.png" type="Texture" id=1]
-[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_senhora.png" type="Texture" id=2]
+[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_def.png" type="Texture" id=1]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/bg.png" type="Texture" id=3]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=4]
 [ext_resource path="res://addons/label_temporizada/LabelTemporizada.gd" type="Script" id=5]
@@ -51,7 +50,7 @@ margin_bottom = 1280.0
 [node name="TextureRect" type="TextureRect" parent="ContainerDialogo"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 expand = true
 
 [node name="DialogContainer" type="Control" parent="ContainerDialogo"]
@@ -71,7 +70,7 @@ anchor_bottom = 1.0
 [node name="TextureRect" type="TextureRect" parent="Tela5"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 expand = true
 
 [node name="Tela4" type="Control" parent="."]
@@ -181,46 +180,46 @@ initial_velocity = 500.0
 
 [node name="Chuva" type="CPUParticles2D" parent="."]
 visible = false
-position = Vector2( 771, 17 )
+position = Vector2( -100, 17 )
 amount = 1000
 lifetime = 4.0
 texture = ExtResource( 4 )
 emission_shape = 2
-emission_rect_extents = Vector2( 800, 20 )
+emission_rect_extents = Vector2( 1000, 20 )
 flag_align_y = true
-direction = Vector2( -1, 1 )
+direction = Vector2( 1, 1 )
 spread = 0.0
-gravity = Vector2( -150, 300 )
+gravity = Vector2( 150, 300 )
 initial_velocity = 500.0
-color = Color( 0.0313726, 0.701961, 0.878431, 1 )
 
 [node name="Enchurrada" type="CPUParticles2D" parent="."]
 visible = false
-position = Vector2( 1359, 118 )
+position = Vector2( -300, 118 )
 amount = 2000
 lifetime = 4.0
 texture = ExtResource( 4 )
 emission_shape = 2
-emission_rect_extents = Vector2( 700, 500 )
+emission_rect_extents = Vector2( 1000, 500 )
 flag_align_y = true
-direction = Vector2( -1, 1 )
+direction = Vector2( 1, 1 )
 spread = 9.91
-gravity = Vector2( -500, 98 )
+gravity = Vector2( 500, 98 )
 initial_velocity = 500.0
 initial_velocity_random = 0.24
 angular_velocity = 118.9
-scale_amount = 2.0
-color = Color( 0.0313726, 0.701961, 0.878431, 1 )
+scale_amount = 1.2
+scale_amount_random = 0.17
 
 [node name="Botoes" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="BotaoAvancar" type="TextureButton" parent="Botoes"]
-anchor_left = 0.677778
+anchor_left = 0.770833
 anchor_top = 0.909375
 anchor_right = 0.930556
-anchor_bottom = 0.959375
+anchor_bottom = 0.942969
+margin_bottom = 5.0
 texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 12 )
 expand = true

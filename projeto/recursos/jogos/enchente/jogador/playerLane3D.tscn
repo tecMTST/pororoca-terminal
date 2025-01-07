@@ -1,49 +1,49 @@
 [gd_scene load_steps=91 format=2]
 
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0000.png" type="Texture" id=1]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0007.png" type="Texture" id=1]
 [ext_resource path="res://addons/controles3D/ControleFaixa3D.gd" type="Script" id=2]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.gd" type="Script" id=3]
 [ext_resource path="res://recursos/jogos/enchente/controlador_arrasta/ControladorArrasta.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/sistema_vida/vida.gd" type="Script" id=5]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0002.png" type="Texture" id=7]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0000.png" type="Texture" id=6]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0005.png" type="Texture" id=7]
 [ext_resource path="res://recursos/jogos/enchente/jogador/AudioStreamPlayer.gd" type="Script" id=8]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0001.png" type="Texture" id=9]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0009.png" type="Texture" id=10]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0007.png" type="Texture" id=11]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0009.png" type="Texture" id=12]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0014.png" type="Texture" id=13]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0005.png" type="Texture" id=14]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0006.png" type="Texture" id=15]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0002.png" type="Texture" id=16]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0004.png" type="Texture" id=17]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0007.png" type="Texture" id=18]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0008.png" type="Texture" id=19]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0000.png" type="Texture" id=20]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0008.png" type="Texture" id=21]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0011.png" type="Texture" id=22]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0012.png" type="Texture" id=23]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0013.png" type="Texture" id=24]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0006.png" type="Texture" id=25]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0001.png" type="Texture" id=26]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0002.png" type="Texture" id=27]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0005.png" type="Texture" id=28]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0004.png" type="Texture" id=29]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0005.png" type="Texture" id=30]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0003.png" type="Texture" id=31]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0006.png" type="Texture" id=32]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0001.png" type="Texture" id=33]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0004.png" type="Texture" id=34]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0010.png" type="Texture" id=35]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0015.png" type="Texture" id=36]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0016.png" type="Texture" id=37]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0017.png" type="Texture" id=38]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0007.png" type="Texture" id=39]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0003.png" type="Texture" id=40]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0018.png" type="Texture" id=41]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0000.png" type="Texture" id=42]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0008.png" type="Texture" id=43]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo/Timeline 1_0003.png" type="Texture" id=44]
-[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento/Timeline 1_0009.png" type="Texture" id=45]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0004.png" type="Texture" id=9]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0005.png" type="Texture" id=10]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0002.png" type="Texture" id=11]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0009.png" type="Texture" id=12]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0001.png" type="Texture" id=13]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0016.png" type="Texture" id=14]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0008.png" type="Texture" id=15]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0007.png" type="Texture" id=16]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0001.png" type="Texture" id=17]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0001.png" type="Texture" id=18]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0003.png" type="Texture" id=19]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0006.png" type="Texture" id=20]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0003.png" type="Texture" id=21]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0003.png" type="Texture" id=22]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0015.png" type="Texture" id=23]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0000.png" type="Texture" id=24]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0004.png" type="Texture" id=25]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0005.png" type="Texture" id=26]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0014.png" type="Texture" id=27]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0011.png" type="Texture" id=28]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0009.png" type="Texture" id=29]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0010.png" type="Texture" id=30]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0004.png" type="Texture" id=31]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0007.png" type="Texture" id=32]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0006.png" type="Texture" id=33]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0000.png" type="Texture" id=34]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0009.png" type="Texture" id=35]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0018.png" type="Texture" id=36]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0002.png" type="Texture" id=37]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0013.png" type="Texture" id=38]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0017.png" type="Texture" id=39]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/agachamento_cont/agachamento_cont_0008.png" type="Texture" id=40]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0006.png" type="Texture" id=41]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_cont/idle_cont_0008.png" type="Texture" id=42]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0012.png" type="Texture" id=43]
+[ext_resource path="res://elementos/imagem/enchente/senhorinha/pulo_cont/pulo_cont_0002.png" type="Texture" id=44]
 [ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_agua/Timeline 1_0005.png" type="Texture" id=46]
 [ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_agua/Timeline 1_0007.png" type="Texture" id=47]
 [ext_resource path="res://elementos/imagem/enchente/senhorinha/idle_agua/Timeline 1_0009.png" type="Texture" id=48]
@@ -118,22 +118,22 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 42 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 40 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 32 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 10 ) ],
 "loop": false,
 "name": "agachamento",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 31 ), ExtResource( 17 ), ExtResource( 28 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 18 ), ExtResource( 37 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 26 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 42 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 32 ), ExtResource( 39 ), ExtResource( 43 ), ExtResource( 45 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 1 ), ExtResource( 40 ), ExtResource( 29 ) ],
 "loop": true,
 "name": "levantar",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 33 ), ExtResource( 16 ), ExtResource( 44 ), ExtResource( 34 ), ExtResource( 14 ), ExtResource( 25 ), ExtResource( 11 ), ExtResource( 21 ), ExtResource( 12 ), ExtResource( 35 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 13 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 41 ) ],
+"frames": [ ExtResource( 34 ), ExtResource( 13 ), ExtResource( 44 ), ExtResource( 21 ), ExtResource( 31 ), ExtResource( 7 ), ExtResource( 41 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 35 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 43 ), ExtResource( 38 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 14 ), ExtResource( 39 ), ExtResource( 36 ) ],
 "loop": true,
 "name": "pulo",
 "speed": 25.0
