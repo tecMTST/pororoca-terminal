@@ -151,6 +151,7 @@ margin_right = 159.28
 margin_bottom = 80.4
 rect_scale = Vector2( 1.33029, 1.33029 )
 texture = ExtResource( 7 )
+expand = true
 stretch_mode = 6
 
 [node name="Bandeira" type="TextureRect" parent="Background"]

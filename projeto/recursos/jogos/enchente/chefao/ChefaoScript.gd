@@ -11,6 +11,7 @@ onready var timer_modulo = $Timers/TimerModos
 onready var boss_sprite = $Sprites/SpriteChefao
 onready var Tentaculos = preload("res://recursos/jogos/enchente/chefao/Tentaculos.tscn")
 onready var BombasChefe = preload("res://recursos/jogos/enchente/chefao/BombasChefe.tscn")
+onready var Alerta = preload("res://recursos/jogos/enchente/chefao/Alerta.tscn")
 onready var Animplayer = $Sprites/SpriteChefao/AnimationPlayer
 onready var audio_stream_player_sfx = $AudioStreamPlayerSFX
 onready var balao_de_ataque = $Sprites/BalaoDeAtaque
@@ -47,12 +48,12 @@ func _ready():
 	timer_modulo.start(28)
 
 func adicionar_lista(modulo_atual, ataque):
-	print(modulo_atual)
+	#print(modulo_atual)
 	var Id_conteudo_modulo = conteudo_total_modulo.get(String(modulo_atual))
 	lista_posicoes = Id_conteudo_modulo.get(String(ataque))
 	if ModuloAtual == ModulosDisponiveis.sessenta_sec:
 		lista_posicoes += Id_conteudo_modulo.get(String(ataque) + String('_1'))
-	print(lista_posicoes)
+	#print(lista_posicoes)
 #		if item.has(modulo_atual):
 
 func _on_TimerModos_timeout():
@@ -102,6 +103,7 @@ func _realizar_ataque():
 	for obj_pos in lista_posicoes:
 		var instanciaMinaAquatica = BombasChefe.instance() as KinematicBody
 		var instanciaTentaculo = Tentaculos.instance() as KinematicBody
+		var instanciaAlerta = Alerta.instance()
 		#print(obj_pos)
 		if lane_atual == 4:
 			yield(get_tree().create_timer(0.3), "timeout")
@@ -116,15 +118,19 @@ func _realizar_ataque():
 			_gerar_fala_de_ataque(1)
 			yield(get_tree().create_timer(1), "timeout")
 			add_child(instanciaMinaAquatica)
+			add_child(instanciaAlerta)
 			if animacao_ataque_feita == false:
 				animacao("Ataque_bombas")
 				animacao_ataque_feita = true
 			if lane_atual == 1:
-				instanciaMinaAquatica.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
+				instanciaMinaAquatica.global_position = faixa_1.global_position
+				instanciaAlerta.global_position = faixa_1.global_position
 			elif lane_atual == 2:
-				instanciaMinaAquatica.global_position = Vector3(faixa_2.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
+				instanciaMinaAquatica.global_position = faixa_2.global_position
+				instanciaAlerta.global_position = faixa_2.global_position
 			elif lane_atual == 3:
-				instanciaMinaAquatica.global_position = Vector3(faixa_3.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
+				instanciaMinaAquatica.global_position = faixa_3.global_position
+				instanciaAlerta.global_position = faixa_3.global_position
 			yield(Animplayer, "animation_finished")
 			animacao("Idle")
 
@@ -132,15 +138,19 @@ func _realizar_ataque():
 			_gerar_fala_de_ataque(0)
 			yield(get_tree().create_timer(1), "timeout")
 			add_child(instanciaTentaculo)
+			add_child(instanciaAlerta)
 			if animacao_ataque_feita == false:
 				animacao("Ataque_tentaculo")
 				animacao_ataque_feita = true
 			if lane_atual == 1:
 				instanciaTentaculo.global_position = faixa_1.global_position
+				instanciaAlerta.global_position = faixa_1.global_position
 			elif lane_atual == 2:
 				instanciaTentaculo.global_position = faixa_2.global_position
+				instanciaAlerta.global_position = faixa_2.global_position
 			elif lane_atual == 3:
 				instanciaTentaculo.global_position = faixa_3.global_position
+				instanciaAlerta.global_position = faixa_3.global_position
 			yield(Animplayer, "animation_finished")
 			animacao("Idle")
 		lane_atual += 1
