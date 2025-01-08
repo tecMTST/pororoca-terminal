@@ -11,19 +11,18 @@ const sfx := [
 ]
 
 onready var sprite_tentaculo = $Sprite3D
-onready var sprite_aviso = $AnimatedSprite3D
 onready var tempo_tela = $TempoDeTela
-onready var tempo_aviso = $TempoDeAviso
 onready var tentaculo_anim = $Sprite3D/AnimationPlayer
 onready var sfx_player := get_node("/root/Enchente/AudioStreamSFX") as AudioStreamPlayer
+export(StreamTexture) var Textinit
 
 func _ready():
 	$CollisionShape.disabled = true
 	sprite_tentaculo.visible = false
 	yield(get_tree().create_timer(2.5), "timeout")
-	sprite_aviso.visible = false
 	sprite_tentaculo.visible = true
-	tentaculo_anim.play("In_OUt")
+	sprite_tentaculo.texture = Textinit
+	tentaculo_anim.play("In_OUt")	
 	yield(tentaculo_anim, "animation_finished")
 	$CollisionShape.disabled = false
 	tentaculo_anim.play("Idle")
