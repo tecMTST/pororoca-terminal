@@ -124,7 +124,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gerenciador_de_estados/maquina_de_estados.gd"
 }, {
-"base": "KinematicBody",
+"base": "Area",
 "class": "Obstaculo",
 "language": "GDScript",
 "path": "res://recursos/jogos/enchente/componentes/Obstaculo.gd"
@@ -182,9 +182,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="mtst-game-template"
+config/name="Pororoca Terminal"
 run/main_scene="res://recursos/abertura/abertura.tscn"
-config/icon="res://elementos/imagem/icon.png"
+config/icon="res://elementos/imagem/abertura/logo.png"
 
 [audio]
 

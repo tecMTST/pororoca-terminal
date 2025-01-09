@@ -241,5 +241,5 @@ bus = "BGM Aux"
 [connection signal="pulou" from="ControleFaixa3D" to="AudioStreamPlayer" method="_on_ControleFaixa3D_pulou"]
 [connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]
 [connection signal="vida_acabou" from="Vida" to="." method="_on_Vida_vida_acabou"]
-[connection signal="body_entered" from="AreaDano" to="." method="_on_AreaDano_body_entered"]
+[connection signal="area_entered" from="AreaDano" to="." method="_on_AreaDano_area_entered"]
 [connection signal="timeout" from="TimerImunidade" to="." method="_on_TimerImunidade_timeout"]
