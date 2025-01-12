@@ -1,0 +1,12 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+
+uniform float animation_speed = 0.5;
+uniform sampler2D noise_texture: hint_black;
+
+void fragment() {
+	vec4 noise_color = texture(noise_texture, UV);
+	ALBEDO = noise_color.rgb;
+}"
