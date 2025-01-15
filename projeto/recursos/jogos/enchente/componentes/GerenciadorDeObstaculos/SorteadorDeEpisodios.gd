@@ -22,8 +22,7 @@ func sortear_modulo(segundos: int) -> Array:
 	return modulo_sorteado['obstaculos']
 	
 func proximo_modulo(modulos_criados: int) -> Array:
-	return _lista_de_modulos[modulos_criados]['obstaculos']
-
+	return _lista_de_modulos[_lista_de_modulos.size() - modulos_criados - 1]['obstaculos']
 
 var historico_de_modulos = []
 
