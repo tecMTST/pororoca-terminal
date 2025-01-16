@@ -6,7 +6,7 @@
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/transparency_BG.png" type="Texture" id=4]
 [ext_resource path="res://elementos/audio/bgm/hub/menu-principal.mp3" type="AudioStream" id=5]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/logo.png" type="Texture" id=6]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/Titulo.png" type="Texture" id=7]
+[ext_resource path="res://elementos/UI/logo_poroca_terminal.png" type="Texture" id=7]
 [ext_resource path="res://recursos/Menu_principal/menu_opcoes/Menu.gd" type="Script" id=8]
 [ext_resource path="res://recursos/jogos/enchente/cenas/Enchente.tscn" type="PackedScene" id=9]
 [ext_resource path="res://elementos/UI/bandeirinha/Timeline 1_0002.png" type="Texture" id=10]
@@ -151,6 +151,7 @@ margin_right = 159.28
 margin_bottom = 80.4
 rect_scale = Vector2( 1.33029, 1.33029 )
 texture = ExtResource( 7 )
+expand = true
 stretch_mode = 6
 
 [node name="Bandeira" type="TextureRect" parent="Background"]

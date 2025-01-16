@@ -42,13 +42,13 @@ func _on_ControladorArrasta_arrastado(chave):
 	elif chave == 'baixo':
 		controle_faixa_3d.abaixar()
 
-func _on_AreaDano_body_entered(body: Node) -> void:
+func _on_AreaDano_area_entered(body: Node) -> void:
 	if body.has_method('tocar_som_impacto'):
 		if not body.is_in_group('obstaculo'):
 			body.tocar_som_impacto(false)
 		if imune and body.is_in_group('obstaculo'):
 			body.tocar_som_impacto(imune)
-	
+
 	if body.is_in_group("terrestre") and not imune and not pulando:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
@@ -86,6 +86,7 @@ func imunidade(dano: bool, tempo: float):
 		$ImunidadeBGM.play()
 
 func _on_TimerImunidade_timeout():
+
 	if imune_dano:
 		sprite.visible = not sprite.visible
 		sprite_agua.visible = not sprite_agua.visible
@@ -95,6 +96,9 @@ func _on_TimerImunidade_timeout():
 			sprite.modulate = Color(1.5, 1.5, 1)
 		else:
 			sprite.modulate = Color(1, 1, 1)
+		if imunidade_time <= (tempo_imunidade_item * 0.50):
+			imunidade_particulas.visible = not imunidade_particulas.visible
+
 	imunidade_time = imunidade_time - timer_imunidade.wait_time
 	if imunidade_time <= 0:
 		finaliza_imunidade()
@@ -110,7 +114,7 @@ func finaliza_imunidade():
 	imunidade_modulate = false
 	sprite.modulate = Color(1, 1, 1)
 	timer_imunidade.stop()
-	
+
 
 func pause():
 	var instance = menuOpcoes.instance()
@@ -157,7 +161,6 @@ func _gerar_fala_de_dano():
 	if rndbalao == lastrnd:
 		randomize()
 		rndbalao = randi() % 4 + 1
-	print(rndbalao)
 	lastrnd = rndbalao
 	BaloesDeFalha.texture = texturas[rndbalao - 1]
 	_animar_tween_balao("Aparecer")

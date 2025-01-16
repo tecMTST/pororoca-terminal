@@ -7,6 +7,7 @@ export(NodePath) var tempo
 onready var _tempo := get_node(tempo) as Timer
 onready var barra = $ProgressoDeTextura
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	barra.value = 0
@@ -14,7 +15,10 @@ func _ready():
 
 
 func _process(delta):
-	barra.value = 2 * barra.rect_size.x * (1 - _tempo.time_left / _tempo.wait_time)
+	if _tempo.time_left:
+		barra.value = 2 * barra.rect_size.x * (1 - _tempo.time_left / _tempo.wait_time)
+	else:
+		barra.value = 0
 
 
 func _ao_tempo_acabar():

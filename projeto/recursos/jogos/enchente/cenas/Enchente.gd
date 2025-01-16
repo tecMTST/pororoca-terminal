@@ -12,6 +12,7 @@ onready var tempo_label = $CanvasLayer/Control/HBoxContainer/Tempo
 onready var agua = $Agua
 onready var audio_stream_bgm := $AudioStreamBGM
 onready var audio_stream_amb := $AudioStreamAMB
+onready var camera := $Camera as Camera
 
 var _volume_atual = 999
 
@@ -32,6 +33,7 @@ func _ready():
 	EnchenteEstadoDeJogo.set_process(true)
 	EnchenteEstadoDeJogo.connect('trocou_fase', self, "_trocou_fase")
 	$ControladorDeObstaculos.iniciar()
+	player_lane_3d.controle_faixa_3d.connect('iniciou_movimento', camera, 'mover')
 	audio_stream_bgm.play()
 
 func _process(_delta):

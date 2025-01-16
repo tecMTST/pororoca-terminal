@@ -1,0 +1,57 @@
+{
+	"events": [
+		{
+			"emit_signal": "inicio",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1723048938.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ufa! Essa enxurrada quase me arrasta, mas consegui me salvar e ainda cheguei a tempo pra pegar meu ônibus. "
+		},
+		{
+			"character": "character-1723048938.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Surreal aquele bicho, e nojento. Saí inteira, mas toda essa lama e desastre… Tomara que esse lamaçal não suba mais, senão a coisa pode piorar pra todo mundo!"
+		},
+		{
+			"emit_signal": "meio",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1733435161.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Mais um dia, mais uma enxurrada."
+		},
+		{
+			"character": "character-1733435161.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A nossa protagonista da vez já se acostumou com esse cotidiano apocalíptico e a duras penas conseguiu surfar nessa onda. Há décadas que essa situação não muda e ninguém faz nada."
+		},
+		{
+			"character": "character-1733435161.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "O que sobra da cidade que é abandonada, com a tampa do esgoto aberta…?"
+		},
+		{
+			"character": "character-1733435161.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Organize-se, só a luta muda a vida."
+		},
+		{
+			"emit_signal": "fim",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.5.1",
+		"file": "timeline-1733430046.json",
+		"name": "enchente-fim"
+	}
+}

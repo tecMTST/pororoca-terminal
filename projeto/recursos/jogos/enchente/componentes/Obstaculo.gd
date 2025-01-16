@@ -1,4 +1,4 @@
-extends KinematicBody
+extends Area
 class_name Obstaculo
 
 enum TIPO {TERRESTRE, AEREO, RAMPA, ITEM}
@@ -6,7 +6,7 @@ enum TIPO {TERRESTRE, AEREO, RAMPA, ITEM}
 const sfx_impacto = preload("res://elementos/audio/sfx/obstaculos/dano-poste.mp3")
 
 export var cores : PoolColorArray = []
-export var velocidade := 1000.0
+export var velocidade := 22.0
 export var textura: Texture
 var sfx: AudioStream
 var info: Dictionary
@@ -37,7 +37,7 @@ func _ready() -> void:
 	tween.start()
 
 func _physics_process(delta: float) -> void:
-	move_and_slide(Vector3(0, 0, velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal * delta), Vector3.UP)
+	position.z += velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal * delta
 
 func tocar_som_impacto(imune: bool):
 	if not sfx:

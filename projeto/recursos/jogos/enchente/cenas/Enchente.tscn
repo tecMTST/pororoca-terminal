@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
@@ -20,9 +20,11 @@
 [ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=18]
 [ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=19]
 [ext_resource path="res://elementos/shaders/enchente/NuvensShader.tres" type="Shader" id=20]
-[ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens2.png" type="Texture" id=21]
+[ext_resource path="res://recursos/jogos/enchente/cenas/CameraEnchente.gd" type="Script" id=21]
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens1.png" type="Texture" id=22]
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens3.png" type="Texture" id=23]
+[ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=24]
+[ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens2.png" type="Texture" id=25]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -32,14 +34,15 @@ shader_param/Velocidade = 1.0
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 20 )
+shader_param/Modular = Color( 0.384314, 0.384314, 0.384314, 1 )
 shader_param/Velocidade_x_1 = 0.3
-shader_param/Velocidade_y_1 = 0.05
-shader_param/Velocidade_x_2 = 0.6
-shader_param/Velocidade_y_2 = -0.1
-shader_param/Velocidade_x_3 = 1.0
-shader_param/Velocidade_y_3 = 0.0
+shader_param/Velocidade_y_1 = 0.0
+shader_param/Velocidade_x_2 = 0.5
+shader_param/Velocidade_y_2 = 0.05
+shader_param/Velocidade_x_3 = 0.6
+shader_param/Velocidade_y_3 = -0.05
 shader_param/Nuvens1 = ExtResource( 23 )
-shader_param/Nuvens2 = ExtResource( 21 )
+shader_param/Nuvens2 = ExtResource( 25 )
 shader_param/Nuvens3 = ExtResource( 22 )
 
 [node name="Enchente" type="Spatial" groups=["Enchente"]]
@@ -50,7 +53,7 @@ wait_time = 300.0
 one_shot = true
 
 [node name="Agua" type="MeshInstance" parent="."]
-transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, -0.158609, -0.113029, 0.799925 )
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, -0.158609, -0.0550902, 0.799925 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
@@ -65,12 +68,15 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 7, 27 )
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.00097084, 7.05001, 26.9958 )
 doppler_tracking = 2
 current = true
 fov = 103.0
+script = ExtResource( 21 )
 
 [node name="Listener" type="Listener" parent="Camera"]
+
+[node name="Tween" type="Tween" parent="Camera"]
 
 [node name="Paredes" type="Spatial" parent="."]
 
@@ -151,6 +157,21 @@ margin_bottom = 35.0
 theme = ExtResource( 7 )
 text = "0.000"
 
+[node name="Chuva" type="CPUParticles2D" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.878431 )
+position = Vector2( 377, 19 )
+amount = 1000
+lifetime = 4.0
+texture = ExtResource( 24 )
+emission_shape = 2
+emission_rect_extents = Vector2( 400, 20 )
+flag_align_y = true
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 300 )
+initial_velocity = 500.0
+color = Color( 0.0313726, 0.701961, 0.878431, 1 )
+
 [node name="BarraDeProgresso" parent="." instance=ExtResource( 1 )]
 tempo = NodePath("../TempoDeJogo")
 
@@ -160,14 +181,14 @@ anchor_bottom = 1.0
 theme = ExtResource( 7 )
 
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 4 )]
-anchor_left = 0.383
-anchor_top = 0.5
-anchor_right = 0.383
-anchor_bottom = 0.5
-margin_left = -64.76
-margin_top = -540.0
-margin_right = -64.76
-margin_bottom = -460.0
+anchor_left = 0.486
+anchor_top = 0.141
+anchor_right = 0.486
+anchor_bottom = 0.141
+margin_left = 0.0799866
+margin_top = -80.48
+margin_right = 0.0799866
+margin_bottom = -0.480011
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )

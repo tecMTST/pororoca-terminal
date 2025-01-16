@@ -8,14 +8,14 @@
 	"name": "Dona Maria",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
-	"offset_y": -280,
+	"offset_x": 50,
+	"offset_y": -200,
 	"portraits": [
 		{
 			"name": "Default",
 			"path": "res://elementos/imagem/enchente/cutscene/maria.png"
 		}
 	],
-	"scale": 50,
+	"scale": 75,
 	"theme": "theme-1728240257.cfg"
 }

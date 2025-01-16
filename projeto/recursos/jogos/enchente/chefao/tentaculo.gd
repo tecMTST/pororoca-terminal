@@ -1,5 +1,7 @@
 extends KinematicBody
 
+export var Tempo = 3.5
+
 const sfx_impacto = preload("res://elementos/audio/sfx/obstaculos/dano-poste.mp3")
 
 const sfx := [
@@ -8,17 +10,24 @@ const sfx := [
 	preload("res://elementos/audio/sfx/chefe/dano-tentaculo-3.mp3")
 ]
 
+onready var sprite_tentaculo = $Sprite3D
+onready var tempo_tela = $TempoDeTela
 onready var tentaculo_anim = $Sprite3D/AnimationPlayer
 onready var sfx_player := get_node("/root/Enchente/AudioStreamSFX") as AudioStreamPlayer
+export(StreamTexture) var Textinit
 
 func _ready():
 	$CollisionShape.disabled = true
-	tentaculo_anim.play("In_OUt")
+	sprite_tentaculo.visible = false
+	yield(get_tree().create_timer(2.5), "timeout")
+	sprite_tentaculo.visible = true
+	sprite_tentaculo.texture = Textinit
+	tentaculo_anim.play("In_OUt")	
 	yield(tentaculo_anim, "animation_finished")
 	$CollisionShape.disabled = false
 	tentaculo_anim.play("Idle")
-	$Timer.start(5)
-	yield($Timer, "timeout")
+	tempo_tela.start(Tempo)
+	yield(tempo_tela, "timeout")
 	tentaculo_anim.play_backwards("In_OUt")
 	yield(tentaculo_anim, "animation_finished")
 	self.queue_free()

@@ -5,8 +5,7 @@
 
 [sub_resource type="SphereShape" id=1]
 
-[node name="Obstaculo" type="KinematicBody" groups=["obstaculo"]]
-collision/safe_margin = 0.01
+[node name="Obstaculo" type="Area" groups=["obstaculo"]]
 script = ExtResource( 2 )
 cores = PoolColorArray( 1, 0.635294, 0.635294, 1, 0.635294, 0.729412, 1, 1, 1, 0.988235, 0.635294, 1, 0.580392, 0.796078, 0.635294, 1 )
 

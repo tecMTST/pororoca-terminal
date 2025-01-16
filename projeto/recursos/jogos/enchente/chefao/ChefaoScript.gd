@@ -1,5 +1,7 @@
 extends Spatial
 
+export(Array, StreamTexture) var texturas_de_ataque
+
 onready var faixa_1 = $Faixas/Faixa1
 onready var faixa_2 = $Faixas/Faixa2
 onready var faixa_3 = $Faixas/Faixa3
@@ -9,9 +11,12 @@ onready var timer_modulo = $Timers/TimerModos
 onready var boss_sprite = $Sprites/SpriteChefao
 onready var Tentaculos = preload("res://recursos/jogos/enchente/chefao/Tentaculos.tscn")
 onready var BombasChefe = preload("res://recursos/jogos/enchente/chefao/BombasChefe.tscn")
+onready var Alerta = preload("res://recursos/jogos/enchente/chefao/Alerta.tscn")
 onready var Animplayer = $Sprites/SpriteChefao/AnimationPlayer
 onready var audio_stream_player_sfx = $AudioStreamPlayerSFX
-
+onready var balao_de_ataque = $Sprites/BalaoDeAtaque
+onready var timer_balao = $Sprites/BalaoDeAtaque/DeixarInvisivel
+onready var tween_balao = $Sprites/BalaoDeAtaque/TweenBalao
 
 signal Chefao_Derrotado
 
@@ -43,12 +48,12 @@ func _ready():
 	timer_modulo.start(28)
 
 func adicionar_lista(modulo_atual, ataque):
-	print(modulo_atual)
+	#print(modulo_atual)
 	var Id_conteudo_modulo = conteudo_total_modulo.get(String(modulo_atual))
 	lista_posicoes = Id_conteudo_modulo.get(String(ataque))
 	if ModuloAtual == ModulosDisponiveis.sessenta_sec:
 		lista_posicoes += Id_conteudo_modulo.get(String(ataque) + String('_1'))
-	print(lista_posicoes)
+	#print(lista_posicoes)
 #		if item.has(modulo_atual):
 
 func _on_TimerModos_timeout():
@@ -98,7 +103,8 @@ func _realizar_ataque():
 	for obj_pos in lista_posicoes:
 		var instanciaMinaAquatica = BombasChefe.instance() as KinematicBody
 		var instanciaTentaculo = Tentaculos.instance() as KinematicBody
-		print(obj_pos)
+		var instanciaAlerta = Alerta.instance()
+		#print(obj_pos)
 		if lane_atual == 4:
 			yield(get_tree().create_timer(0.3), "timeout")
 			animacao("Idle")
@@ -109,30 +115,42 @@ func _realizar_ataque():
 			instanciaTentaculo.queue_free()
 
 		elif obj_pos == 1:
+			_gerar_fala_de_ataque(1)
+			yield(get_tree().create_timer(1), "timeout")
 			add_child(instanciaMinaAquatica)
+			add_child(instanciaAlerta)
 			if animacao_ataque_feita == false:
 				animacao("Ataque_bombas")
 				animacao_ataque_feita = true
 			if lane_atual == 1:
-				instanciaMinaAquatica.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
+				instanciaMinaAquatica.global_position = faixa_1.global_position
+				instanciaAlerta.global_position = faixa_1.global_position
 			elif lane_atual == 2:
-				instanciaMinaAquatica.global_position = Vector3(faixa_2.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
+				instanciaMinaAquatica.global_position = faixa_2.global_position
+				instanciaAlerta.global_position = faixa_2.global_position
 			elif lane_atual == 3:
-				instanciaMinaAquatica.global_position = Vector3(faixa_3.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
+				instanciaMinaAquatica.global_position = faixa_3.global_position
+				instanciaAlerta.global_position = faixa_3.global_position
 			yield(Animplayer, "animation_finished")
 			animacao("Idle")
 
 		elif obj_pos == 2:
+			_gerar_fala_de_ataque(0)
+			yield(get_tree().create_timer(1), "timeout")
 			add_child(instanciaTentaculo)
+			add_child(instanciaAlerta)
 			if animacao_ataque_feita == false:
 				animacao("Ataque_tentaculo")
 				animacao_ataque_feita = true
 			if lane_atual == 1:
 				instanciaTentaculo.global_position = faixa_1.global_position
+				instanciaAlerta.global_position = faixa_1.global_position
 			elif lane_atual == 2:
 				instanciaTentaculo.global_position = faixa_2.global_position
+				instanciaAlerta.global_position = faixa_2.global_position
 			elif lane_atual == 3:
 				instanciaTentaculo.global_position = faixa_3.global_position
+				instanciaAlerta.global_position = faixa_3.global_position
 			yield(Animplayer, "animation_finished")
 			animacao("Idle")
 		lane_atual += 1
@@ -159,3 +177,21 @@ func _auto_destruir():
 	emit_signal("Chefao_Derrotado")
 	yield(get_tree().create_timer(2), "timeout")
 	TrocadorDeCenas.trocar_cena('res://recursos/Menu_principal/TelasExtras/Tela_Vitoria.tscn')
+
+func _gerar_fala_de_ataque(num_ataque):
+	balao_de_ataque.texture = texturas_de_ataque[num_ataque]
+	_animar_tween_balao("Aparecer")
+	timer_balao.start(1.2)
+	yield(timer_balao, 'timeout')
+	_animar_tween_balao("Desaparecer")
+
+func _animar_tween_balao(anim):
+	if anim == "Aparecer":
+		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(1.9, 1.9, 1.9), Vector3(2.5, 2.5, 2.5), 1.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		tween_balao.start()
+		balao_de_ataque.visible = true
+	elif anim == "Desaparecer":
+		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(2.5, 2.5, 2.5), Vector3(1.9, 1.9, 1.9), 1.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		tween_balao.start()
+		yield(tween_balao, "tween_completed")
+		balao_de_ataque.visible = false

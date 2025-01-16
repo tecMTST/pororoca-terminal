@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://elementos/UI/card_vitoria.png" type="Texture" id=1]
-[ext_resource path="res://elementos/UI/botao_voltar_a_tela_inicial_pressed.png" type="Texture" id=2]
-[ext_resource path="res://elementos/UI/botao_voltar_a_tela_inicial_hover.png" type="Texture" id=3]
-[ext_resource path="res://elementos/UI/botao_voltar_a_tela_inicial_default.png" type="Texture" id=4]
+[ext_resource path="res://elementos/UI/botao_continuar_default.png" type="Texture" id=2]
+[ext_resource path="res://elementos/UI/botao_continuar_pressed.png" type="Texture" id=3]
+[ext_resource path="res://elementos/UI/botao_continuar_hover.png" type="Texture" id=4]
 [ext_resource path="res://elementos/audio/bgm/jogo/tela-vitoria.mp3" type="AudioStream" id=5]
 [ext_resource path="res://elementos/audio/sfx/hud-clique.mp3" type="AudioStream" id=6]
 [ext_resource path="res://recursos/Menu_principal/TelasExtras/Tela_vitoria.gd" type="Script" id=7]
@@ -52,9 +52,9 @@ margin_top = -33.168
 margin_right = 177.278
 margin_bottom = 32.832
 toggle_mode = true
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 3 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 __meta__ = {
