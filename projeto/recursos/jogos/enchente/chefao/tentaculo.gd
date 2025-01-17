@@ -1,4 +1,5 @@
-extends KinematicBody
+extends Area
+class_name Tentaculo
 
 export var Tempo = 3.5
 
@@ -22,7 +23,7 @@ func _ready():
 	yield(get_tree().create_timer(2.5), "timeout")
 	sprite_tentaculo.visible = true
 	sprite_tentaculo.texture = Textinit
-	tentaculo_anim.play("In_OUt")	
+	tentaculo_anim.play("In_OUt")
 	yield(tentaculo_anim, "animation_finished")
 	$CollisionShape.disabled = false
 	tentaculo_anim.play("Idle")
