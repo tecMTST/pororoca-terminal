@@ -1,4 +1,5 @@
-extends KinematicBody
+extends Area
+class_name Bomba
 
 const sfx_impacto = preload("res://elementos/audio/sfx/obstaculos/dano-poste.mp3")
 
@@ -7,7 +8,7 @@ export var velocidade = 15.0
 onready var sfx_player := get_node("/root/Enchente/AudioStreamSFX") as AudioStreamPlayer
 
 func _physics_process(delta: float) -> void:
-	move_and_slide(Vector3(0, 0, velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal), Vector3.UP)
+	position.z += velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal * delta
 
 func tocar_som_impacto(imune: bool):
 	if imune:

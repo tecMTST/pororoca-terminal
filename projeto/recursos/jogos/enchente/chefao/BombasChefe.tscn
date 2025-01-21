@@ -5,7 +5,7 @@
 
 [sub_resource type="SphereShape" id=1]
 
-[node name="BombasChefe" type="KinematicBody" groups=["aereo", "minasAquaticas", "obstaculo"]]
+[node name="BombasChefe" type="Area" groups=["aereo", "minasAquaticas", "obstaculo"]]
 script = ExtResource( 1 )
 velocidade = 10.0
 
