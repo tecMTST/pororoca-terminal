@@ -106,7 +106,8 @@ func _realizar_ataque():
 		var instanciaAlerta = Alerta.instance()
 		#print(obj_pos)
 		if lane_atual == 4:
-			yield(get_tree().create_timer(0.3), "timeout")
+			var idle_timer = get_tree().create_timer(0.45)
+			yield(idle_timer, "timeout")
 			animacao("Idle")
 			lane_atual = 1
 
@@ -118,20 +119,21 @@ func _realizar_ataque():
 
 		elif obj_pos == 1:
 			_gerar_fala_de_ataque(1)
-			yield(get_tree().create_timer(1), "timeout")
+			var mina_timer = get_tree().create_timer(1)
+			yield(mina_timer, "timeout")
 			add_child(instanciaMinaAquatica)
 			add_child(instanciaAlerta)
 			if animacao_ataque_feita == false:
 				animacao("Ataque_bombas")
 				animacao_ataque_feita = true
 			if lane_atual == 1:
-				instanciaMinaAquatica.global_position.x = faixa_1.global_position.x
+				instanciaMinaAquatica.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 				instanciaAlerta.global_position = faixa_1.global_position
 			elif lane_atual == 2:
-				instanciaMinaAquatica.global_position.x = faixa_2.global_position.x
+				instanciaMinaAquatica.global_position = Vector3(faixa_2.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 				instanciaAlerta.global_position = faixa_2.global_position
 			elif lane_atual == 3:
-				instanciaMinaAquatica.global_position.x = faixa_3.global_position.x
+				instanciaMinaAquatica.global_position = Vector3(faixa_3.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 				instanciaAlerta.global_position = faixa_3.global_position
 
 			yield(Animplayer, "animation_finished")
@@ -139,7 +141,8 @@ func _realizar_ataque():
 
 		elif obj_pos == 2:
 			_gerar_fala_de_ataque(0)
-			yield(get_tree().create_timer(1), "timeout")
+			var tentaculo_timer = get_tree().create_timer(1)
+			yield(tentaculo_timer, "timeout")
 			add_child(instanciaTentaculo)
 			add_child(instanciaAlerta)
 			if animacao_ataque_feita == false:
@@ -175,26 +178,30 @@ func loadJson(nomejson):
 
 func _auto_destruir():
 	Animplayer.play_backwards("in_out")
+	$Sprites/SpriteChefao/tweenchefao.interpolate_property($Sprites/SpriteChefao, "translation", Vector3(0.318, 2.57, 13.041), Vector3(0.318, -4, 13.041), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	$Sprites/SpriteChefao/tweenchefao.start()
 	audio_stream_player_sfx.tocar_sfx("chefe-morte")
-	yield(get_tree().create_timer(0.7), "timeout")
+	var derrota_timer = get_tree().create_timer(0.7)
+	yield(derrota_timer, "timeout")
 	emit_signal("Chefao_Derrotado")
-	yield(get_tree().create_timer(2), "timeout")
+	var trocar_cena_timer = get_tree().create_timer(3.5)
+	yield(trocar_cena_timer, "timeout")
 	TrocadorDeCenas.trocar_cena('res://recursos/Menu_principal/TelasExtras/Tela_Vitoria.tscn')
 
 func _gerar_fala_de_ataque(num_ataque):
 	balao_de_ataque.texture = texturas_de_ataque[num_ataque]
 	_animar_tween_balao("Aparecer")
-	timer_balao.start(1.2)
+	timer_balao.start(1)
 	yield(timer_balao, 'timeout')
 	_animar_tween_balao("Desaparecer")
 
 func _animar_tween_balao(anim):
 	if anim == "Aparecer":
-		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(1.9, 1.9, 1.9), Vector3(2.5, 2.5, 2.5), 1.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(1.9, 1.9, 1.9), Vector3(2.5, 2.5, 2.5), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		tween_balao.start()
 		balao_de_ataque.visible = true
 	elif anim == "Desaparecer":
-		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(2.5, 2.5, 2.5), Vector3(1.9, 1.9, 1.9), 1.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(2.5, 2.5, 2.5), Vector3(1.9, 1.9, 1.9), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		tween_balao.start()
 		yield(tween_balao, "tween_completed")
 		balao_de_ataque.visible = false

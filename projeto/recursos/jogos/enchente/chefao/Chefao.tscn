@@ -202,6 +202,8 @@ anims/Idle = SubResource( 4 )
 anims/RESET = SubResource( 8 )
 anims/in_out = SubResource( 6 )
 
+[node name="tweenchefao" type="Tween" parent="Sprites/SpriteChefao"]
+
 [node name="BalaoDeAtaque" type="Sprite3D" parent="Sprites"]
 transform = Transform( -1.9, 0, 2.86892e-07, 0, 1.9, 0, -2.86892e-07, 0, -1.9, -2.87154, 3.07821, 13.8725 )
 visible = false
