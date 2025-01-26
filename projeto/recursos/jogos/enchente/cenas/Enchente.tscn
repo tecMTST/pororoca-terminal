@@ -9,7 +9,7 @@
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=7]
 [ext_resource path="res://elementos/scripts/ScriptsBackgroundCidadeSubindo/cidadeSubindo.gd" type="Script" id=8]
 [ext_resource path="res://elementos/modelos/skybox/skyboxNuvens.tscn" type="PackedScene" id=9]
-[ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=10]
+[ext_resource path="res://elementos/imagem/enchente/skybox_terminal.png" type="Texture" id=10]
 [ext_resource path="res://elementos/audio/bgm/jogo/amb-correnteza.mp3" type="AudioStream" id=11]
 [ext_resource path="res://elementos/audio/bgm/jogo/lv1-surf.mp3" type="AudioStream" id=12]
 [ext_resource path="res://recursos/jogos/enchente/componentes/GerenciadorDeObstaculos/ControladorDeObstaculos.tscn" type="PackedScene" id=13]
@@ -215,7 +215,7 @@ alpha_cut = 1
 texture = ExtResource( 15 )
 
 [node name="SpriteCidade2" type="Sprite3D" parent="cidadesubindo"]
-transform = Transform( 10.7519, -0.00490382, -0.290019, 0.00675251, 9.93325, -0.000153019, 2.58632, -0.000179814, 1.20567, 19, -15, -5 )
+transform = Transform( 4.23078, -0.00234657, -0.0258206, 0.00261952, 3.80587, 6.69189e-06, 0.230262, -0.000181396, 0.47442, 0.790832, -1.42091, -6.6358 )
 billboard = 1
 double_sided = false
 alpha_cut = 2

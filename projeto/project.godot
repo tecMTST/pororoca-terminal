@@ -129,7 +129,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gerenciador_de_estados/maquina_de_estados.gd"
 }, {
-"base": "KinematicBody",
+"base": "Area",
 "class": "Obstaculo",
 "language": "GDScript",
 "path": "res://recursos/jogos/enchente/componentes/Obstaculo.gd"

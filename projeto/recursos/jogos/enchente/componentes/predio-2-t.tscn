@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://elementos/modelos/enchente/Material_002.material" type="Material" id=1]
+[ext_resource path="res://elementos/modelos/enchente/predio_2.jpg" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 1 )
 
 [sub_resource type="ArrayMesh" id=7]
 resource_name = "predio-2-t_Cube002"
@@ -11,7 +14,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 384,
-"material": ExtResource( 1 ),
+"material": SubResource( 8 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 248
@@ -22,4 +25,3 @@ surfaces/0 = {
 [node name="Cube002" type="MeshInstance" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 6.645, 0, 1.97323, 0 )
 mesh = SubResource( 7 )
-material/0 = ExtResource( 1 )
