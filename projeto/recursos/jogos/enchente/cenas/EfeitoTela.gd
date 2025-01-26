@@ -2,13 +2,14 @@ extends ColorRect
 
 export var preenchimento_minimo := 0.0
 export var preenchimento_maximo := 1.0
+export var repetir_animacao := false
 export var tempo_pulso := 1
 
 onready var tween := $Tween as Tween
 
 func _ready() -> void:
 	EnchenteEstadoDeJogo.connect('dano_jogador', self, '_dano_jogador')
-	tween.repeat = true
+	tween.repeat = repetir_animacao
 
 func _dano_jogador(vida) -> void:
 	if tween.is_active():
