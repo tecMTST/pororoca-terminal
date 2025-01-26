@@ -178,3 +178,6 @@ func _animar_tween_balao(anim):
 		TweenBalao.start()
 		yield(TweenBalao, "tween_completed")
 		BaloesDeFalha.visible = false
+
+func _on_Vida_vida_alterada(alteracao):
+	EnchenteEstadoDeJogo.emit_signal("dano_jogador", alteracao)

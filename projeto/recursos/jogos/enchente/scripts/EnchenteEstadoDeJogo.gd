@@ -3,6 +3,7 @@ extends Node
 signal iniciou()
 signal trocou_fase(fase)
 signal nova_velocidade()
+signal dano_jogador(vida)
 
 var VelocidadeGlobal = 1.0
 var DictVelocidades: Dictionary = {}

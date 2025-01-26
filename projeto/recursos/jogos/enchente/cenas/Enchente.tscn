@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
@@ -23,8 +23,11 @@
 [ext_resource path="res://recursos/jogos/enchente/cenas/CameraEnchente.gd" type="Script" id=21]
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens1.png" type="Texture" id=22]
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens3.png" type="Texture" id=23]
-[ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=24]
+[ext_resource path="res://addons/trocador_de_cenas/dissolve2d.shader" type="Shader" id=24]
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens2.png" type="Texture" id=25]
+[ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=26]
+[ext_resource path="res://recursos/jogos/enchente/cenas/EfeitoTela.gd" type="Script" id=27]
+[ext_resource path="res://elementos/imagem/vignette.jpg" type="Texture" id=28]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -44,6 +47,15 @@ shader_param/Velocidade_y_3 = -0.05
 shader_param/Nuvens1 = ExtResource( 23 )
 shader_param/Nuvens2 = ExtResource( 25 )
 shader_param/Nuvens3 = ExtResource( 22 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 24 )
+shader_param/dissolve_amount = 0.0
+shader_param/fade_color = Color( 0.588235, 0.0588235, 0.0588235, 0.490196 )
+shader_param/fade = false
+shader_param/inverted = false
+shader_param/alpha_enabled = true
+shader_param/dissolve_texture = ExtResource( 28 )
 
 [node name="Enchente" type="Spatial" groups=["Enchente"]]
 script = ExtResource( 14 )
@@ -114,6 +126,7 @@ faixas = NodePath("../Faixas")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458483, 22.8555 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 margin_left = 15.0
@@ -163,7 +176,7 @@ modulate = Color( 1, 1, 1, 0.878431 )
 position = Vector2( 377, 19 )
 amount = 1000
 lifetime = 4.0
-texture = ExtResource( 24 )
+texture = ExtResource( 26 )
 emission_shape = 2
 emission_rect_extents = Vector2( 400, 20 )
 flag_align_y = true
@@ -172,6 +185,16 @@ spread = 0.0
 gravity = Vector2( 0, 300 )
 initial_velocity = 500.0
 color = Color( 0.882353, 0.882353, 0.882353, 0.431373 )
+
+[node name="EfeitoTela" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 27 )
+preenchimento_maximo = 0.2
+
+[node name="Tween" type="Tween" parent="CanvasLayer/EfeitoTela"]
 
 [node name="BarraDeProgresso" parent="." instance=ExtResource( 1 )]
 tempo = NodePath("../TempoDeJogo")
