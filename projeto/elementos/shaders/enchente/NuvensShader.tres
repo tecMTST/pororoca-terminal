@@ -32,6 +32,7 @@ input_name = "uv"
 
 [sub_resource type="VisualShaderNodeTextureUniform" id=11]
 uniform_name = "Nuvens1"
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeScalarUniform" id=12]
 uniform_name = "Velocidade_y_1"
@@ -66,6 +67,7 @@ operator = 2
 
 [sub_resource type="VisualShaderNodeTextureUniform" id=22]
 uniform_name = "Nuvens2"
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeScalarOp" id=23]
 operator = 2
@@ -94,6 +96,7 @@ default_value_enabled = true
 
 [sub_resource type="VisualShaderNodeTextureUniform" id=29]
 uniform_name = "Nuvens3"
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeScalarOp" id=30]
 operator = 6
@@ -117,13 +120,13 @@ render_mode specular_schlick_ggx, async_visible;
 uniform vec4 Modular : hint_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 uniform float Velocidade_x_1 = 1;
 uniform float Velocidade_y_1 = 1;
-uniform sampler2D Nuvens1;
+uniform sampler2D Nuvens1 : hint_albedo;
 uniform float Velocidade_x_2 = 1;
 uniform float Velocidade_y_2 = 1;
-uniform sampler2D Nuvens2;
+uniform sampler2D Nuvens2 : hint_albedo;
 uniform float Velocidade_x_3 = 1;
 uniform float Velocidade_y_3 = 1;
-uniform sampler2D Nuvens3;
+uniform sampler2D Nuvens3 : hint_albedo;
 
 
 
@@ -278,7 +281,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -674.461, -272.49 )
+graph_offset = Vector2( -971.441, -188.753 )
 nodes/fragment/0/position = Vector2( 460, 20 )
 nodes/fragment/2/node = SubResource( 11 )
 nodes/fragment/2/position = Vector2( -640, -80 )
