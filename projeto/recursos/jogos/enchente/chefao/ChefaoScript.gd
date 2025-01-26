@@ -92,7 +92,7 @@ func _realizar_acao():
 
 func _on_TimerAtaque_timeout():
 	_realizar_acao()
-	
+
 func animacao(animacao):
 	Animplayer.play(animacao)
 
@@ -101,8 +101,8 @@ func _realizar_ataque():
 	var animacao_ataque_feita = false
 
 	for obj_pos in lista_posicoes:
-		var instanciaMinaAquatica = BombasChefe.instance() as KinematicBody
-		var instanciaTentaculo = Tentaculos.instance() as KinematicBody
+		var instanciaMinaAquatica = BombasChefe.instance()
+		var instanciaTentaculo = Tentaculos.instance()
 		var instanciaAlerta = Alerta.instance()
 		#print(obj_pos)
 		if lane_atual == 4:
@@ -111,8 +111,10 @@ func _realizar_ataque():
 			lane_atual = 1
 
 		if obj_pos == 0:
-			instanciaMinaAquatica.queue_free()
-			instanciaTentaculo.queue_free()
+			if instanciaMinaAquatica:
+				instanciaMinaAquatica.queue_free()
+			if instanciaTentaculo:
+				instanciaTentaculo.queue_free()
 
 		elif obj_pos == 1:
 			_gerar_fala_de_ataque(1)
@@ -123,14 +125,15 @@ func _realizar_ataque():
 				animacao("Ataque_bombas")
 				animacao_ataque_feita = true
 			if lane_atual == 1:
-				instanciaMinaAquatica.global_position = faixa_1.global_position
+				instanciaMinaAquatica.global_position.x = faixa_1.global_position.x
 				instanciaAlerta.global_position = faixa_1.global_position
 			elif lane_atual == 2:
-				instanciaMinaAquatica.global_position = faixa_2.global_position
+				instanciaMinaAquatica.global_position.x = faixa_2.global_position.x
 				instanciaAlerta.global_position = faixa_2.global_position
 			elif lane_atual == 3:
-				instanciaMinaAquatica.global_position = faixa_3.global_position
+				instanciaMinaAquatica.global_position.x = faixa_3.global_position.x
 				instanciaAlerta.global_position = faixa_3.global_position
+
 			yield(Animplayer, "animation_finished")
 			animacao("Idle")
 
