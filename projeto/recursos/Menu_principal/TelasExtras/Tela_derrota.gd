@@ -2,9 +2,9 @@ extends Node
 
 export var jogarnovamente: String = "res://recursos/jogos/enchente/cenas/Enchente.tscn"
 
-
 func _ready():
-	pass # Replace with function body.
+	$Transparencia.rect_size.x = get_viewport().get_visible_rect().size.x
+	$Transparencia.rect_size.y = get_viewport().get_visible_rect().size.y
 
 func _on_Voltarjogo_button_up():
 	get_tree().paused = false

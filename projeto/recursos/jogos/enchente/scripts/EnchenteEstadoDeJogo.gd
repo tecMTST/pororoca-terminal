@@ -32,3 +32,6 @@ func definir_tempo_de_jogo(tempo: float) -> void:
 func iniciar_temporizador() -> void:
 	TemporizadorGlobal.start()
 	emit_signal('iniciou')
+
+func get_fase_atual() -> int:
+	return fase

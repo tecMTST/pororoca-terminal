@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=1]
 [ext_resource path="res://elementos/audio/bgm/jogo/lv1-surf.mp3" type="AudioStream" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://elementos/UI/icone_toalha_default.png" type="Texture" id=15]
 [ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=16]
 [ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=17]
+[ext_resource path="res://recursos/Menu_principal/TelasExtras/Contador_de_Nivel.tscn" type="PackedScene" id=18]
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends Spatial
@@ -246,5 +247,7 @@ bus = "SFX Game"
 [node name="Contador" parent="." instance=ExtResource( 9 )]
 
 [node name="BotaoMenu" parent="." instance=ExtResource( 3 )]
+
+[node name="Nivel" parent="." instance=ExtResource( 18 )]
 
 [connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]
