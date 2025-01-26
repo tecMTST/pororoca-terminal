@@ -196,7 +196,7 @@ shape = SubResource( 1 )
 wait_time = 0.2
 
 [node name="BalaoDeFala" type="Sprite3D" parent="."]
-transform = Transform( -0.54, 0, 8.15377e-08, 0, 0.54, 0, -8.15377e-08, 0, -0.54, -0.0177393, 3.00375, 0.12553 )
+transform = Transform( -1.08, 0, 8.15377e-08, 0, 0.918, 0, -1.63075e-07, 0, -0.54, -0.0177393, 3.00375, 0.12553 )
 visible = false
 billboard = 1
 texture = ExtResource( 80 )
