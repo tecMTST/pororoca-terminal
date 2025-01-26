@@ -193,6 +193,7 @@ playing = true
 
 [node name="SpriteChefao" type="Sprite3D" parent="Sprites"]
 transform = Transform( 3.37658, 6.77889e-08, 0, -6.50722e-08, 3.24126, 0.946337, 1.89988e-08, -0.946337, 3.24126, 0.3177, 2.57017, 13.0411 )
+visible = false
 texture = ExtResource( 48 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/SpriteChefao"]

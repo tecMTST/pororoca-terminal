@@ -13,6 +13,8 @@ onready var agua = $Agua
 onready var audio_stream_bgm := $AudioStreamBGM
 onready var audio_stream_amb := $AudioStreamAMB
 onready var camera := $Camera as Camera
+onready var chuva := $CanvasLayer/Chuva
+onready var tamanho_tela = OS.get_screen_size()
 
 var _volume_atual = 999
 
@@ -22,6 +24,9 @@ func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
 	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
 
+	chuva.emission_rect_extents.x = tamanho_tela.x * 2
+	chuva.amount = tamanho_tela.x
+	print(get_viewport().size.x)
 	$Contador.visible = true
 	$Contador/Animador.play("aproximar")
 	yield($Contador/Animador, 'animation_finished')

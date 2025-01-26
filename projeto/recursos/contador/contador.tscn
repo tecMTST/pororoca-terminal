@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://elementos/audio/sfx/countdown-baixo.mp3" type="AudioStream" id=1]
 [ext_resource path="res://elementos/UI/contador_frame_1.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://elementos/UI/contador_frame_4.png" type="Texture" id=4]
 [ext_resource path="res://elementos/UI/contador_frame_2.png" type="Texture" id=5]
 [ext_resource path="res://elementos/UI/contador_frame_3.png" type="Texture" id=6]
-[ext_resource path="res://recursos/contador/contador.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -195,7 +194,6 @@ margin_left = -360.0
 margin_top = -640.0
 margin_right = 360.0
 margin_bottom = 640.0
-script = ExtResource( 7 )
 
 [node name="Animador" type="AnimationPlayer" parent="."]
 autoplay = "desaparecer"
@@ -209,7 +207,6 @@ margin_top = 320.0
 margin_right = 540.0
 margin_bottom = 960.0
 rect_min_size = Vector2( 360, 640 )
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 180, 320 )
 texture = ExtResource( 5 )
 expand = true

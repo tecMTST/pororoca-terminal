@@ -33,12 +33,4 @@ func iniciar_temporizador() -> void:
 	emit_signal('iniciou')
 
 func get_fase_atual() -> int:
-	var fase_timer = get_tree().create_timer(2)
-	yield(fase_timer, "timeout")
 	return fase
-
-func atualizou_fase(atual) -> bool:
-	if atual != fase:
-		return true
-	else:
-		return false

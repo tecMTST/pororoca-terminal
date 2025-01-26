@@ -142,7 +142,7 @@ text = "0.000"
 
 [node name="Chuva" type="CPUParticles2D" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0.878431 )
-position = Vector2( 377, 19 )
+position = Vector2( 366, -177 )
 amount = 1000
 lifetime = 4.0
 texture = ExtResource( 20 )
@@ -165,13 +165,13 @@ anchor_bottom = 1.0
 theme = ExtResource( 7 )
 
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 4 )]
-anchor_left = 0.486
+anchor_left = 0.361
 anchor_top = 0.141
-anchor_right = 0.486
+anchor_right = 0.361
 anchor_bottom = 0.141
-margin_left = 0.0799866
+margin_left = 90.08
 margin_top = -80.48
-margin_right = 0.0799866
+margin_right = 90.08
 margin_bottom = -0.480011
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")

@@ -40,6 +40,7 @@ var conteudo_total_modulo = loadJson(CAMINHO_MODULO)
 func _ready():
 	#print(conteudo_total_modulo)
 	#print(timer_atual)
+	boss_sprite.visible = true
 	Animplayer.play("in_out")
 	yield(Animplayer, "animation_finished")
 	Animplayer.play("Idle")

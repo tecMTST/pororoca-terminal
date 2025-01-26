@@ -21,5 +21,9 @@ func _process(delta):
 		barra.value = 0
 
 
-func _ao_tempo_acabar():
+func _ao_tempo_acabar() -> void:
 	emit_signal("tempo_acabado")
+
+
+func enviar_pos() -> Vector2:
+	return Vector2($ProgressoDeTextura.rect_position.x, $ProgressoDeTextura.rect_position.y)
