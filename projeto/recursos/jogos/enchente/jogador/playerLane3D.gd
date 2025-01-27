@@ -1,6 +1,8 @@
 extends KinematicBody
 class_name PlayerLane3D
 
+export var tamanho_balao_falha_max: float = 0.5
+export var tamanho_balao_falha_min: float = 0.2
 export var tempo_imunidade_dano: float = 3.0
 export var tempo_imunidade_item: float = 5.0
 export var tempo_tela_balao: float = 1
@@ -171,10 +173,10 @@ func _gerar_fala_de_dano():
 func _animar_tween_balao(anim):
 	if anim == "Aparecer":
 		BaloesDeFalha.visible = true
-		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(0.54, 0.54, 0.54), Vector3(0.71, 0.71, 0.71), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(tamanho_balao_falha_min, tamanho_balao_falha_min, tamanho_balao_falha_min), Vector3(tamanho_balao_falha_max, tamanho_balao_falha_max, tamanho_balao_falha_max), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		TweenBalao.start()
 	elif anim == "Desaparecer":
-		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(0.71, 0.71, 0.71), Vector3(0.54, 0.54, 0.54), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(tamanho_balao_falha_max, tamanho_balao_falha_max, tamanho_balao_falha_max), Vector3(tamanho_balao_falha_min, tamanho_balao_falha_min, tamanho_balao_falha_min), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		TweenBalao.start()
 		yield(TweenBalao, "tween_completed")
 		BaloesDeFalha.visible = false

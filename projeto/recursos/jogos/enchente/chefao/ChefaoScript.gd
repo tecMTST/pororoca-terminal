@@ -1,6 +1,8 @@
 extends Spatial
 
 export(Array, StreamTexture) var texturas_de_ataque
+export var tamanho_balao_ataque_max: float = 2.3
+export var tamanho_balao_ataque_min: float = 0.75
 
 onready var faixa_1 = $Faixas/Faixa1
 onready var faixa_2 = $Faixas/Faixa2
@@ -198,11 +200,11 @@ func _gerar_fala_de_ataque(num_ataque):
 
 func _animar_tween_balao(anim):
 	if anim == "Aparecer":
-		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(1.9, 1.9, 1.9), Vector3(2.5, 2.5, 2.5), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(tamanho_balao_ataque_min, tamanho_balao_ataque_min, tamanho_balao_ataque_min), Vector3(tamanho_balao_ataque_max, tamanho_balao_ataque_max, tamanho_balao_ataque_max), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		tween_balao.start()
 		balao_de_ataque.visible = true
 	elif anim == "Desaparecer":
-		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(2.5, 2.5, 2.5), Vector3(1.9, 1.9, 1.9), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		tween_balao.interpolate_property(balao_de_ataque, "scale", Vector3(tamanho_balao_ataque_max, tamanho_balao_ataque_max, tamanho_balao_ataque_max), Vector3(tamanho_balao_ataque_min, tamanho_balao_ataque_min, tamanho_balao_ataque_min), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		tween_balao.start()
 		yield(tween_balao, "tween_completed")
 		balao_de_ataque.visible = false
