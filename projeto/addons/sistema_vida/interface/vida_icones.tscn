@@ -7,6 +7,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 80 )
+rect_pivot_offset = Vector2( 0, 40 )
 script = ExtResource( 1 )
 
 [node name="Vidas" type="HBoxContainer" parent="."]

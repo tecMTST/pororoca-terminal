@@ -26,8 +26,8 @@ func _process(delta):
 
 	var fase_atual = EnchenteEstadoDeJogo.get_fase_atual() - 1
 
-	yield(get_tree().create_timer(2.5),"timeout")
 	if fase < fase_atual and fase_atual <= 2:
+		yield(get_tree().create_timer(2.5),"timeout")
 		print(fase_atual)
 		change_popup(fase_atual)
 		change_indicador(fase_atual)
