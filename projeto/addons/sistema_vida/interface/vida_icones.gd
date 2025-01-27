@@ -2,11 +2,13 @@ extends Control
 
 export(NodePath) var componente_com_vida
 export(Texture) var textura_icone
+export(StreamTexture) var textura_icone_desabilitada
 export var tamanho_icone := 32.0
 
 onready var vida := get_node(componente_com_vida).vida as Vida
 onready var icone := TextureRect.new()
 onready var icones := $Vidas as HBoxContainer
+onready var barraprogresso = get_node("/root/Enchente/BarraDeProgresso")
 
 func _ready() -> void:
 	icone.texture = textura_icone
@@ -23,8 +25,16 @@ func _vida_maxima_alterada(vida_maxima_alterada: Vida.VidaMaximaAlterada) -> voi
 			icones.add_child(icone.duplicate())
 	else:
 		for _i in range( - vida_maxima_alterada.diferenca):
-			icones.remove_child(icone)
+			icones.remove(icones)
 
 func _vida_alterada(vida_alterada: Vida.VidaAlterada) -> void:
 	for icone_vida in icones.get_children():
-		icone_vida.visible = icone_vida.get_index() < vida_alterada.vida_atual
+		if icone_vida.get_index() < vida_alterada.vida_atual:
+			icone_vida.texture = textura_icone
+		else:
+			icone_vida.texture = textura_icone_desabilitada
+
+func _process(delta):
+	if barraprogresso.has_method("enviar_pos"):
+		var progressopos = barraprogresso.enviar_pos()
+		self.rect_position = Vector2((progressopos.x + 250), (progressopos.y + 100))

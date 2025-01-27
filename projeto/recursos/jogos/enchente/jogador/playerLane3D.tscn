@@ -144,7 +144,6 @@ animations = [ {
 
 [sub_resource type="StreamTexture" id=6]
 flags = 7
-load_path = "res://.import/bobeira.png-601e02303a6de0267f6cc56d6baeb889.s3tc.stex"
 
 [sub_resource type="PlaneMesh" id=4]
 material = ExtResource( 84 )

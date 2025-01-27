@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens3.png" type="Texture" id=23]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=24]
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens2.png" type="Texture" id=25]
+[ext_resource path="res://recursos/Menu_principal/TelasExtras/Contador_de_Nivel.tscn" type="PackedScene" id=26]
+[ext_resource path="res://elementos/UI/icone_toalha_disabled.png" type="Texture" id=27]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -193,6 +195,7 @@ margin_bottom = -0.480011
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )
+textura_icone_desabilitada = ExtResource( 27 )
 tamanho_icone = 45.0
 
 [node name="skybox_nuvens" parent="." instance=ExtResource( 9 )]
@@ -245,5 +248,7 @@ bus = "SFX Game"
 [node name="Contador" parent="." instance=ExtResource( 17 )]
 
 [node name="BotaoMenu" parent="." instance=ExtResource( 19 )]
+
+[node name="Nivel" parent="." instance=ExtResource( 26 )]
 
 [connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]

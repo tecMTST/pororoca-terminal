@@ -36,7 +36,7 @@ stretch_mode = 5
 [node name="PopUp" type="TextureRect" parent="."]
 pause_mode = 2
 visible = false
-modulate = Color( 1, 1, 1, 0.498039 )
+modulate = Color( 1, 1, 1, 0.784314 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

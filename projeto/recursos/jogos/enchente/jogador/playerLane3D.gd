@@ -1,8 +1,8 @@
 extends KinematicBody
 class_name PlayerLane3D
 
-export var tamanho_balao_falha_max: float = 0.5
-export var tamanho_balao_falha_min: float = 0.2
+export var tamanho_balao_falha_max: float = 0.35
+export var tamanho_balao_falha_min: float = 0.1
 export var tempo_imunidade_dano: float = 3.0
 export var tempo_imunidade_item: float = 5.0
 export var tempo_tela_balao: float = 1
