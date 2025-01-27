@@ -1,8 +1,8 @@
 extends Spatial
 
 export(Array, StreamTexture) var texturas_de_ataque
-export var tamanho_balao_ataque_max: float = 3.5
-export var tamanho_balao_ataque_min: float = 1.5
+export var tamanho_balao_ataque_max: float = 2.3
+export var tamanho_balao_ataque_min: float = 0.75
 
 onready var faixa_1 = $Faixas/Faixa1
 onready var faixa_2 = $Faixas/Faixa2
