@@ -5,7 +5,7 @@ export var preenchimento_maximo := 1.0
 export var repetir_animacao := false
 export var tempo_pulso := 1
 
-onready var tween := $Tween as Tween
+onready var tween := $Tween
 
 func _ready() -> void:
 	EnchenteEstadoDeJogo.connect('dano_jogador', self, '_dano_jogador')
