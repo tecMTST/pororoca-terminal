@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://elementos/imagem/Skybox/nuvens/GrupoNuvens2.png" type="Texture" id=25]
 [ext_resource path="res://recursos/Menu_principal/TelasExtras/Contador_de_Nivel.tscn" type="PackedScene" id=26]
 [ext_resource path="res://elementos/UI/icone_toalha_disabled.png" type="Texture" id=27]
+[ext_resource path="res://recursos/jogos/enchente/cenas/EfeitoDano.tscn" type="PackedScene" id=28]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -174,6 +175,8 @@ spread = 0.0
 gravity = Vector2( 0, 300 )
 initial_velocity = 500.0
 color = Color( 0.882353, 0.882353, 0.882353, 0.431373 )
+
+[node name="EfeitoDano" parent="CanvasLayer" instance=ExtResource( 28 )]
 
 [node name="BarraDeProgresso" parent="." instance=ExtResource( 1 )]
 tempo = NodePath("../TempoDeJogo")
