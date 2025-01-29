@@ -20,7 +20,9 @@ func sortear_modulo(segundos: int) -> Array:
 	_remover_grupo(modulo_sorteado['grupo'])
 	historico_de_modulos.append(modulo_sorteado)
 	return modulo_sorteado['obstaculos']
-
+	
+func proximo_modulo(modulos_criados: int) -> Array:
+	return _lista_de_modulos[_lista_de_modulos.size() - modulos_criados - 1]['obstaculos']
 
 var historico_de_modulos = []
 
