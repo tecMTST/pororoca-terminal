@@ -21,5 +21,6 @@ ambient_light_sky_contribution = 0.4
 fog_enabled = true
 fog_color = Color( 0.839216, 0.568627, 0.454902, 0.756863 )
 fog_depth_begin = 0.0
+fog_depth_end = 200.0
 dof_blur_far_distance = 256.43
 glow_enabled = true
