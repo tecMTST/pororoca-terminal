@@ -1,7 +1,7 @@
 extends Area
 class_name Tentaculo
 
-export var Tempo = 2.5
+export var Tempo = 2
 
 const sfx_impacto = preload("res://elementos/audio/sfx/obstaculos/dano-poste.mp3")
 
