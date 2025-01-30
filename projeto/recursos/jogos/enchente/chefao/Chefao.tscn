@@ -206,8 +206,7 @@ anims/in_out = SubResource( 6 )
 [node name="tweenchefao" type="Tween" parent="Sprites/SpriteChefao"]
 
 [node name="BalaoDeAtaque" type="Sprite3D" parent="Sprites"]
-transform = Transform( -1.9, 0, 2.86892e-07, 0, 1.9, 0, -2.86892e-07, 0, -1.9, -2.87154, 3.07821, 13.8725 )
-visible = false
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -2.87154, 3.07821, 13.8725 )
 texture = ExtResource( 67 )
 
 [node name="TweenBalao" type="Tween" parent="Sprites/BalaoDeAtaque"]
