@@ -87,7 +87,7 @@ Textinit = ExtResource( 17 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 0.784259, 0, 0, 0, 1.22246, 0, 0, 0, 1.05592, 0.541796, 2.60755, 0 )
-texture = ExtResource( 17 )
+texture = ExtResource( 27 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
 root_node = NodePath("../..")
