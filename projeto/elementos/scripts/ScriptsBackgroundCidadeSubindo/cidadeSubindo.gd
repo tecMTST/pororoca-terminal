@@ -18,8 +18,8 @@ func _iniciar() -> void:
 	timerDoTempoDeEspera.start()
 
 func _mover_cidade() -> void:
-	var posicao_inicial := Vector3(0,-2.5, 0)
-	var posicao_final := Vector3(0, 11.5, 0)
+	var posicao_inicial := Vector3(0,-15.0, 0)
+	var posicao_final := Vector3(0, 23.0, 0)
 	var tempo_transicao := EnchenteEstadoDeJogo.TemporizadorGlobal.wait_time - 60
 	tween.interpolate_property($SpriteCidade, "position", posicao_inicial, posicao_final, tempo_transicao, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	tween.start()

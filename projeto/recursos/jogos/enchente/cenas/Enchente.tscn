@@ -66,7 +66,7 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="Ceu" type="MeshInstance" parent="."]
-transform = Transform( -101.034, 3.91694e-07, -4.70499e-06, -1.39062e-05, -2.90315, 31.1597, -6.08793e-07, 1.30966, 69.0722, 0.122211, 28.8861, -25.8858 )
+transform = Transform( -101.034, 7.02851e-07, -4.70498e-06, -2.02124e-05, -2.25414, 53.5316, 1.13114e-05, 2.24997, 53.6308, 0.122, 52.7105, -74.6968 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 4 )
 
@@ -75,6 +75,7 @@ transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0
 doppler_tracking = 2
 current = true
 fov = 103.0
+far = 200.0
 script = ExtResource( 21 )
 
 [node name="Listener" type="Listener" parent="Camera"]
@@ -210,7 +211,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )
 script = ExtResource( 8 )
 
 [node name="SpriteCidade" type="Sprite3D" parent="cidadesubindo"]
-transform = Transform( 8.46765, 0, 0.0831564, 0, 6.79913, 0, -0.741566, 0, 0.949525, 0, -2.5, 0 )
+transform = Transform( 12.5, 0, 0, 0, 9.999, 0, 0, 0, 1.401, 0, -15, 0 )
 use_in_baked_light = true
 lightmap_scale = 1
 pixel_size = 0.005
@@ -221,10 +222,13 @@ alpha_cut = 1
 texture = ExtResource( 15 )
 
 [node name="SpriteCidade2" type="Sprite3D" parent="cidadesubindo"]
-transform = Transform( 4.23078, -0.00234657, -0.0258206, 0.00261952, 3.80587, 6.69189e-06, 0.230262, -0.000181396, 0.47442, 0.790832, -1.42091, -6.6358 )
+transform = Transform( 2.23369, -0.00123929, -0.0136406, 0.00138301, 2.01, 3.5352e-06, 0.12157, -9.58007e-05, 0.250629, 0.791, 2, 10 )
+use_in_baked_light = true
+lightmap_scale = 1
 billboard = 1
+shaded = true
 double_sided = false
-alpha_cut = 2
+alpha_cut = 1
 texture = ExtResource( 10 )
 
 [node name="TimerDoTempoDeEspera" type="Timer" parent="cidadesubindo"]
