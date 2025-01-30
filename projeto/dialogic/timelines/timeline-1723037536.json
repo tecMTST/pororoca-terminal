@@ -4,7 +4,19 @@
 			"character": "character-1723048925.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[color=#f4535d]Dona Maria acaba de sair da casa de sua filha para visitar sua nova neta. Enquanto fuma seu cigarrinho, vai em direção ao terminal Bandeira para pegar seu ônibus, como de costume.[/color]"
+			"text": "[color=#f4535d]Dona Maria acaba de sair da casa de sua filha para visitar sua nova neta.[/color]"
+		},
+		{
+			"character": "character-1723048925.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=#f4535d]Enquanto fuma seu cigarrinho, vai em direção ao Terminal Bandeira.[/color]"
+		},
+		{
+			"character": "character-1723048925.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=#f4535d]Ela vai pegar seu ônibus, como de costume.[/color]"
 		},
 		{
 			"animation": "slide_in_left.gd",
@@ -31,7 +43,13 @@
 			"character": "character-1723048938.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[color=#cc2727]Dona Maria:[/color] Parece que vem uma chuva por aí. Se eu correr acho que dá pra pegar meu ônibus a tempo."
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Parece que vem uma chuva por aí..."
+		},
+		{
+			"character": "character-1723048938.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Se eu correr acho que dá pra pegar meu ônibus a tempo!"
 		},
 		{
 			"emit_signal": "garoa",
@@ -46,7 +64,7 @@
 			"character": "character-1723048938.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[color=#cc2727]Dona Maria:[/color] Puts, vou ter que me esconder em algum lugar e esperar essa chuva passar."
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Puts, vou ter que me esconder em algum lugar e esperar essa chuva passar."
 		},
 		{
 			"emit_signal": "chuva",
@@ -91,7 +109,13 @@
 			"character": "character-1723048925.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[color=#f4535d]Em meio ao caos e griteiro que encheu a rua, uma enxurrada vinha arrastando tudo ladeira abaixo.[/color]"
+			"text": "[color=#f4535d]Começou um caos e griteiro que encheram a rua.[/color]"
+		},
+		{
+			"character": "character-1723048925.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=#f4535d]Uma enxurrada vinha arrastando tudo ladeira abaixo.[/color]"
 		},
 		{
 			"event_id": "dialogic_023",
@@ -107,7 +131,13 @@
 			"character": "character-1723048925.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[color=#f4535d]Engenhosa como ela só, dona Maria viu um enorme saco de lixo ao seu lado, e sem pensar duas vezes o agarrou...[/color]"
+			"text": "[color=#f4535d]Dona Maria viu um enorme saco de lixo ao seu lado...[/color]"
+		},
+		{
+			"character": "character-1723048925.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[color=#f4535d]Engenhosa como ela só, sem pensar duas vezes o agarrou...[/color]"
 		},
 		{
 			"emit_signal": "saco_dona_maria",
