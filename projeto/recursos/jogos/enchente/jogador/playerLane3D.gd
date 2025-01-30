@@ -19,6 +19,7 @@ onready var posicao_sprite_agua_original = sprite_agua.global_position
 onready var imunidade_particulas = $ImunidadeParticulas
 onready var BaloesDeFalha: Sprite3D = $BalaoDeFala
 onready var TweenBalao: Tween = $BalaoDeFala/TweenBalao
+onready var impacto_particles = $ImpactoParticles
 
 var imune = false
 var imune_dano = false
@@ -47,9 +48,10 @@ func _on_ControladorArrasta_arrastado(chave):
 func _on_AreaDano_area_entered(body: Node) -> void:
 	if body.has_method('tocar_som_impacto'):
 		if not body.is_in_group('obstaculo'):
-			body.tocar_som_impacto(false)
+			body.tocar_som_impacto(false)			
 		if imune and body.is_in_group('obstaculo'):
-			body.tocar_som_impacto(imune)
+			body.tocar_som_impacto(imune)		
+				
 
 	if body.is_in_group("terrestre") and not imune and not pulando:
 		vida.receber_dano(1.0)
@@ -57,12 +59,14 @@ func _on_AreaDano_area_entered(body: Node) -> void:
 		imunidade(true, tempo_imunidade_dano)
 		if body.has_method('tocar_som_impacto'):
 			body.tocar_som_impacto(false)
+			impacto_particles.emitting = true		
 	if body.is_in_group("aereo") and not imune and not abaixado:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
 		imunidade(true, tempo_imunidade_dano)
 		if body.has_method('tocar_som_impacto'):
 			body.tocar_som_impacto(false)
+			impacto_particles.emitting = true		
 	if body.is_in_group("invencibilidade"):
 		body.queue_free()
 		imunidade(false, tempo_imunidade_item)
