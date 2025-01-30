@@ -37,6 +37,7 @@ func _input(event):
 func _process(delta):
 	sprite_agua.global_position.y = posicao_sprite_agua_original.y
 
+
 func _on_ControladorArrasta_arrastado(chave):
 	if chave == 'direita':
 		controle_faixa_3d.mover_direita()
@@ -162,6 +163,13 @@ func _on_SpriteAgua_animation_finished():
 		sprite_agua.play("Idle")
 
 func _gerar_fala_de_dano():
+	print(controle_faixa_3d.get_posicao_atual())
+	if controle_faixa_3d.get_posicao_atual() == 0:
+		BaloesDeFalha.global_position.x = -2
+	elif controle_faixa_3d.get_posicao_atual() == 1:
+		BaloesDeFalha.global_position.x = 1
+	else:
+		BaloesDeFalha.global_position.x = 2
 	randomize()
 	var rndbalao = randi() % 4 + 1
 	if rndbalao == lastrnd:

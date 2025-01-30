@@ -257,3 +257,6 @@ func _destravar_posicao():
 		parent.axis_lock_motion_x = false
 		parent.axis_lock_motion_y = false
 		parent.axis_lock_motion_z = false
+
+func get_posicao_atual() -> int:
+	return posicao_atual
