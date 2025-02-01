@@ -13,7 +13,7 @@
 [ext_resource path="res://elementos/modelos/skybox/skyboxNuvens.tscn" type="PackedScene" id=11]
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=12]
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=13]
-[ext_resource path="res://recursos/jogos/enchente/chefao/Chefao.tscn" type="PackedScene" id=14]
+[ext_resource path="res://recursos/jogos/enchente/chefao/ChamadaDoBoss.tscn" type="PackedScene" id=14]
 [ext_resource path="res://elementos/UI/icone_toalha_default.png" type="Texture" id=15]
 [ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=16]
 [ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=17]
@@ -38,6 +38,7 @@ onready var audio_stream_amb := $AudioStreamAMB
 var _volume_atual = 999
 
 func _ready():
+	$ChamadaDoBoss.iniciar()
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_1.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_2.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
@@ -79,8 +80,7 @@ shader_param/Velocidade = 1.0
 [node name="Enchente" type="Spatial"]
 script = SubResource( 7 )
 
-[node name="Chefao" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.216507 )
+[node name="ChamadaDoBoss" parent="." instance=ExtResource( 14 )]
 
 [node name="TempoDeJogo" type="Timer" parent="."]
 wait_time = 300.0

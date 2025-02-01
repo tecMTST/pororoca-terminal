@@ -28,7 +28,7 @@ func _on_PularPrimeiro_button_up():
 	yield(tweentransicao, "tween_completed")
 	primeiroframe.modulate = Color(1, 1, 1, 0)
 	primeiroframe.visible = false
-
+	get_tree().paused = true
 
 func _on_PularSegundo_button_up():
 	terceiroframe.modulate = Color(1, 1, 1, 0)
@@ -41,7 +41,7 @@ func _on_PularSegundo_button_up():
 	yield(tweentransicao, "tween_completed")
 	segundoframe.modulate = Color(1, 1, 1, 0)
 	segundoframe.visible = false
-
+	get_tree().paused = true
 
 func _on_PularTerceiro_button_up():
 	quartoframe.modulate = Color(1, 1, 1, 0)
@@ -63,6 +63,7 @@ func _on_PularTerceiro_button_up():
 	terceiroframe.visible = false
 	ajudardonamaria.modulate = Color(1, 1, 1, 0)
 	ajudardonamaria.visible = false
+	get_tree().paused = true
 
 func _on_PularQuarto_button_up():
 	tweentransicao.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -70,5 +71,6 @@ func _on_PularQuarto_button_up():
 	yield(tweentransicao, "tween_completed")
 	SingletonOpcoesGlobais.Tutorial_finalizado = true
 	SingletonOpcoesGlobais.salvar_globais()
+	quartoframe.visible = false
 	get_tree().paused = false
 	self.queue_free()
