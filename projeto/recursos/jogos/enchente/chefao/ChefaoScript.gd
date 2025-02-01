@@ -1,7 +1,8 @@
 extends Spatial
 
 export(Array, StreamTexture) var texturas_de_ataque
-export var tamanho_balao_ataque_max: float = 1.0
+export(StreamTexture) var textura_entrada
+export var tamanho_balao_ataque_max: float = 0.85
 export var tamanho_balao_ataque_min: float = 0.3
 
 onready var faixa_1 = $Faixas/Faixa1
@@ -35,14 +36,16 @@ enum ModulosDisponiveis {
 
 var ModuloAtual
 var lista_posicoes
+var ultima_posicao: int = 1
 var timer_atual: int = 0 # maximo é 3
 var CAMINHO_MODULO = 'res://recursos/jogos/enchente/chefao/modulos.json'
 var conteudo_total_modulo = loadJson(CAMINHO_MODULO)
 
 func _ready():
-	#print(conteudo_total_modulo)
-	#print(timer_atual)
+	randomize()
+	boss_sprite.texture = textura_entrada
 	boss_sprite.visible = true
+	audio_stream_player_sfx.tocar_sfx("chefe-morte")
 	Animplayer.play("in_out")
 	yield(Animplayer, "animation_finished")
 	Animplayer.play("Idle")
@@ -51,13 +54,14 @@ func _ready():
 	timer_modulo.start(28)
 
 func adicionar_lista(modulo_atual, ataque):
-	#print(modulo_atual)
+	randomize()
 	var Id_conteudo_modulo = conteudo_total_modulo.get(String(modulo_atual))
 	lista_posicoes = Id_conteudo_modulo.get(String(ataque))
 	if ModuloAtual == ModulosDisponiveis.sessenta_sec:
 		lista_posicoes += Id_conteudo_modulo.get(String(ataque) + String('_1'))
-	#print(lista_posicoes)
-#		if item.has(modulo_atual):
+	ultima_posicao = ataque
+	print(lista_posicoes)
+
 
 func _on_TimerModos_timeout():
 	timer_atual += 1
@@ -76,7 +80,9 @@ func _mudaModulo():
 
 func _realizar_acao():
 	randomize()
-	var random_ataque = randi() % 3 + 1
+	var random_ataque = randi() % 6 + 1
+	while ultima_posicao == random_ataque:
+		random_ataque = randi() % 6 + 1
 	match ModuloAtual:
 		ModulosDisponiveis.vinte_sec:
 			adicionar_lista("20_sec", random_ataque)
@@ -130,14 +136,14 @@ func _realizar_ataque():
 				animacao("Ataque_bombas")
 				animacao_ataque_feita = true
 			if lane_atual == 1:
-				instanciaMinaAquatica.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 				instanciaAlerta.global_position = faixa_1.global_position
+				instanciaMinaAquatica.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 			elif lane_atual == 2:
-				instanciaMinaAquatica.global_position = Vector3(faixa_2.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 				instanciaAlerta.global_position = faixa_2.global_position
+				instanciaMinaAquatica.global_position = Vector3(faixa_2.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 			elif lane_atual == 3:
-				instanciaMinaAquatica.global_position = Vector3(faixa_3.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 				instanciaAlerta.global_position = faixa_3.global_position
+				instanciaMinaAquatica.global_position = Vector3(faixa_3.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 
 			yield(Animplayer, "animation_finished")
 			animacao("Idle")
@@ -181,7 +187,7 @@ func loadJson(nomejson):
 
 func _auto_destruir():
 	Animplayer.play_backwards("in_out")
-	$Sprites/SpriteChefao/tweenchefao.interpolate_property($Sprites/SpriteChefao, "translation", Vector3(0.318, 2.57, 13.041), Vector3(0.318, -4, 13.041), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	$Sprites/SpriteChefao/tweenchefao.interpolate_property(boss_sprite, "translation", Vector3(boss_sprite.translation.x, boss_sprite.translation.y, boss_sprite.translation.z), Vector3(boss_sprite.translation.x, boss_sprite.translation.y - 100, boss_sprite.translation.z), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	$Sprites/SpriteChefao/tweenchefao.start()
 	audio_stream_player_sfx.tocar_sfx("chefe-morte")
 	var derrota_timer = get_tree().create_timer(0.7)

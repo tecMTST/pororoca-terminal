@@ -1,6 +1,9 @@
 extends AudioStreamPlayer
 
 const sfx := {
+	"chefe-alerta": [
+		preload("res://elementos/audio/sfx/chefe/boss_alarm.mp3")
+	],
 	"ataque": [
 		preload("res://elementos/audio/sfx/chefe/ataque-tentaculo.mp3")
 	],
