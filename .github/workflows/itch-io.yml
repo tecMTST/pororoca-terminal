@@ -37,8 +37,6 @@ jobs:
           cd exportados/web
           zip -r ../../build/build.zip *
 
-          mv build.zip build/
-
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
