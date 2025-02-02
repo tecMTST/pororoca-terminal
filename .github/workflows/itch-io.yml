@@ -33,7 +33,7 @@ jobs:
           mkdir -v -p exportados/web
           godot --no-window --verbose --path $(pwd)/projeto/ --export "HTML5" $(pwd)/exportados/web/index.html
 
-          zip -r build.zip exportados/web/
+          zip -r build.zip exportados/web/*
           rm -rf exportados/web
 
           mkdir build/
