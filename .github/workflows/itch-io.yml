@@ -33,11 +33,10 @@ jobs:
           mkdir -v -p exportados/web
           godot --no-window --verbose --path $(pwd)/projeto/ --export "HTML5" $(pwd)/exportados/web/index.html
 
-          cd exportados/web
-          zip -r ../../build.zip *
-          rm -rf exportados/web
-
           mkdir build/
+          cd exportados/web
+          zip -r ../../build/build.zip *
+
           mv build.zip build/
 
       - name: Upload artifact
