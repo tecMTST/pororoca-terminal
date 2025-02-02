@@ -1,6 +1,6 @@
 extends Control
 
-onready var dialog_container = $DialogContainer
+onready var dialog_container = $ContainerDialogo/DialogContainer
 onready var mascara = $Pre/Mascara
 onready var tween_inicio = $TweenInicio
 export var menupath: String = 'res://recursos/Menu_principal/Menu_Principal.tscn'
@@ -25,14 +25,14 @@ func _on_dialogic_signal(arg):
 	match arg:
 		"meio":
 			tween_inicio.interpolate_property(mascara, "modulate:a", 0.0, 1.0, 0.5)
-			tween_inicio.start()			
+			tween_inicio.start()
 			yield(get_tree().create_timer(0.5), "timeout")
 			pos.visible = true
 			tween_inicio.interpolate_property(mascara, "modulate:a", 1.0, 0.0, 0.5)
-			tween_inicio.start()			
-			yield(get_tree().create_timer(0.5), "timeout")						
+			tween_inicio.start()
+			yield(get_tree().create_timer(0.5), "timeout")
 		"fim":
 			finalizar()
-			
+
 func finalizar():
-	TrocadorDeCenas.trocar_cena(menupath)	
+	TrocadorDeCenas.trocar_cena(menupath)
