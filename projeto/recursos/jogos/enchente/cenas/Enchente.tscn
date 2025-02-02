@@ -56,7 +56,7 @@ wait_time = 300.0
 one_shot = true
 
 [node name="Agua" type="MeshInstance" parent="."]
-transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, -0.158609, -0.0550902, 0.799925 )
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, 0, 0, 0.8 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
@@ -118,6 +118,7 @@ faixas = NodePath("../Faixas")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458483, 22.8555 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 margin_left = 15.0
