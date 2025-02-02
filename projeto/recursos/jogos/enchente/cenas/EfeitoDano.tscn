@@ -7,8 +7,8 @@
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 2 )
 shader_param/dissolve_amount = 0.0
-shader_param/fade_color = Color( 0.635294, 0.137255, 0.137255, 0.588235 )
-shader_param/fade = false
+shader_param/fade_color = Color( 0.635294, 0.137255, 0.137255, 0.337255 )
+shader_param/fade = true
 shader_param/inverted = false
 shader_param/alpha_enabled = true
 shader_param/dissolve_texture = ExtResource( 1 )
