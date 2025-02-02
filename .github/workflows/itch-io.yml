@@ -60,5 +60,5 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
         run: |
-          /app/butler push build.zip ntmtst/pororoca-terminal:html5
+          /app/butler push build.zip ntmtst/surf-terminal:html5
 
