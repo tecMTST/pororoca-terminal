@@ -1,6 +1,8 @@
 extends KinematicBody
 class_name PlayerLane3D
 
+export var tamanho_balao_falha_max: float = 0.35
+export var tamanho_balao_falha_min: float = 0.1
 export var tempo_imunidade_dano: float = 3.0
 export var tempo_imunidade_item: float = 5.0
 export var tempo_tela_balao: float = 1
@@ -17,6 +19,7 @@ onready var posicao_sprite_agua_original = sprite_agua.global_position
 onready var imunidade_particulas = $ImunidadeParticulas
 onready var BaloesDeFalha: Sprite3D = $BalaoDeFala
 onready var TweenBalao: Tween = $BalaoDeFala/TweenBalao
+onready var impacto_particles = $ImpactoParticles
 
 var imune = false
 var imune_dano = false
@@ -34,6 +37,7 @@ func _input(event):
 func _process(delta):
 	sprite_agua.global_position.y = posicao_sprite_agua_original.y
 
+
 func _on_ControladorArrasta_arrastado(chave):
 	if chave == 'direita':
 		controle_faixa_3d.mover_direita()
@@ -45,9 +49,10 @@ func _on_ControladorArrasta_arrastado(chave):
 func _on_AreaDano_area_entered(body: Node) -> void:
 	if body.has_method('tocar_som_impacto'):
 		if not body.is_in_group('obstaculo'):
-			body.tocar_som_impacto(false)
+			body.tocar_som_impacto(false)			
 		if imune and body.is_in_group('obstaculo'):
-			body.tocar_som_impacto(imune)
+			body.tocar_som_impacto(imune)		
+				
 
 	if body.is_in_group("terrestre") and not imune and not pulando:
 		vida.receber_dano(1.0)
@@ -55,12 +60,14 @@ func _on_AreaDano_area_entered(body: Node) -> void:
 		imunidade(true, tempo_imunidade_dano)
 		if body.has_method('tocar_som_impacto'):
 			body.tocar_som_impacto(false)
+			impacto_particles.emitting = true		
 	if body.is_in_group("aereo") and not imune and not abaixado:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
 		imunidade(true, tempo_imunidade_dano)
 		if body.has_method('tocar_som_impacto'):
 			body.tocar_som_impacto(false)
+			impacto_particles.emitting = true		
 	if body.is_in_group("invencibilidade"):
 		body.queue_free()
 		imunidade(false, tempo_imunidade_item)
@@ -156,6 +163,13 @@ func _on_SpriteAgua_animation_finished():
 		sprite_agua.play("Idle")
 
 func _gerar_fala_de_dano():
+	print(controle_faixa_3d.get_posicao_atual())
+	if controle_faixa_3d.get_posicao_atual() == 0:
+		BaloesDeFalha.global_position.x = -2
+	elif controle_faixa_3d.get_posicao_atual() == 1:
+		BaloesDeFalha.global_position.x = 1
+	else:
+		BaloesDeFalha.global_position.x = 2
 	randomize()
 	var rndbalao = randi() % 4 + 1
 	if rndbalao == lastrnd:
@@ -171,10 +185,13 @@ func _gerar_fala_de_dano():
 func _animar_tween_balao(anim):
 	if anim == "Aparecer":
 		BaloesDeFalha.visible = true
-		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(0.54, 0.54, 0.54), Vector3(0.71, 0.71, 0.71), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(tamanho_balao_falha_min, tamanho_balao_falha_min, tamanho_balao_falha_min), Vector3(tamanho_balao_falha_max, tamanho_balao_falha_max, tamanho_balao_falha_max), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		TweenBalao.start()
 	elif anim == "Desaparecer":
-		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(0.71, 0.71, 0.71), Vector3(0.54, 0.54, 0.54), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		TweenBalao.interpolate_property(BaloesDeFalha, "scale", Vector3(tamanho_balao_falha_max, tamanho_balao_falha_max, tamanho_balao_falha_max), Vector3(tamanho_balao_falha_min, tamanho_balao_falha_min, tamanho_balao_falha_min), tempo_tela_balao, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		TweenBalao.start()
 		yield(TweenBalao, "tween_completed")
 		BaloesDeFalha.visible = false
+
+func _on_Vida_vida_alterada(alteracao):
+	EnchenteEstadoDeJogo.emit_signal("dano_jogador", alteracao)

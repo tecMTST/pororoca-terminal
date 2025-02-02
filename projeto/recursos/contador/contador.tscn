@@ -207,7 +207,6 @@ margin_top = 320.0
 margin_right = 540.0
 margin_bottom = 960.0
 rect_min_size = Vector2( 360, 640 )
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 180, 320 )
 texture = ExtResource( 5 )
 expand = true

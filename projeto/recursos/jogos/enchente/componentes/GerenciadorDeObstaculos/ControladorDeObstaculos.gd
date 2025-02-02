@@ -34,10 +34,7 @@ func parar() -> void:
 	_intervalo_adicionar_modulos.stop()
 
 func adicionar_modulo() -> void:
-	var modulo = _sorteador.sortear_modulo(EnchenteEstadoDeJogo.TempoAtual)
-
-	assert(modulo.size() > 0, 'O modulo deve ter pelo menos uma linha')
-	assert(modulo[0].size() == _pontos_de_origem.size(), 'O tamanho dos pontos de origem deve ser o mesmo de obstaculos por linha')
+	var modulo = _sorteador.proximo_modulo(_numero_modulos_criados)
 
 	var contador_linha = 0
 	for linha in modulo:

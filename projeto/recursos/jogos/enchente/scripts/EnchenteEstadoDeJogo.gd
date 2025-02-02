@@ -3,6 +3,7 @@ extends Node
 signal iniciou()
 signal trocou_fase(fase)
 signal nova_velocidade()
+signal dano_jogador(vida)
 
 var VelocidadeGlobal = 1.0
 var DictVelocidades: Dictionary = {}
@@ -31,3 +32,6 @@ func definir_tempo_de_jogo(tempo: float) -> void:
 func iniciar_temporizador() -> void:
 	TemporizadorGlobal.start()
 	emit_signal('iniciou')
+
+func get_fase_atual() -> int:
+	return fase

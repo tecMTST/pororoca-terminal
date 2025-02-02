@@ -24,8 +24,10 @@ var ponto_atual = 1
 
 func _ready():	
 	var time = Time.get_datetime_dict_from_system()
-	texto_2.definir_texto(str(time["day"]) + "/" + str(time["month"]) + "/" +  str(time["year"])
-							+ " - 17:45")
+	var dia = "0" + str(time["day"]) if time["day"] < 10 else  str(time["day"])
+	var mes = "0" + str(time["month"]) if time["month"] < 10 else  str(time["month"])
+	var ano = str(time["year"])
+	texto_2.definir_texto(dia + "/" + mes+ "/" + ano + " - 17:45")
 	botao_avancar.connect("button_down", self, "_on_button_down_sound")
 	botao_pular.connect("button_down", self, "_on_button_down_sound")
 
