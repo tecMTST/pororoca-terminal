@@ -8,13 +8,37 @@
 			"character": "character-1723048938.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ufa! Essa enxurrada quase me arrasta, mas consegui me salvar e ainda cheguei a tempo pra pegar meu ônibus. "
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Ufa! Essa enxurrada quase me arrasta..."
 		},
 		{
 			"character": "character-1723048938.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Surreal aquele bicho, e nojento. Saí inteira, mas toda essa lama e desastre… Tomara que esse lamaçal não suba mais, senão a coisa pode piorar pra todo mundo!"
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Mas consegui me salvar e ainda cheguei a tempo pra pegar meu ônibus!"
+		},
+		{
+			"character": "character-1723048938.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Surreal aquele bicho... e nojento também!"
+		},
+		{
+			"character": "character-1723048938.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Saí inteira, mas toda essa lama e desastre…"
+		},
+		{
+			"character": "character-1723048938.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Tomara que esse lamaçal não suba mais... "
+		},
+		{
+			"character": "character-1723048938.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[b][color=#cc2727]Dona Maria:[/color][/b] Senão a coisa pode piorar pra todo mundo!"
 		},
 		{
 			"emit_signal": "meio",
@@ -30,7 +54,13 @@
 			"character": "character-1733435161.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "A nossa protagonista da vez já se acostumou com esse cotidiano apocalíptico e a duras penas conseguiu surfar nessa onda. Há décadas que essa situação não muda e ninguém faz nada."
+			"text": "A nossa protagonista da vez já se acostumou com esse cotidiano apocalíptico e a duras penas conseguiu surfar nessa onda."
+		},
+		{
+			"character": "character-1733435161.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Mas quem está olhando para quem é arrastado pela enxurrada, afinal?"
 		},
 		{
 			"character": "character-1733435161.json",
