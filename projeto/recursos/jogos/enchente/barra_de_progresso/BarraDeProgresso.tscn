@@ -41,17 +41,17 @@ stretch_margin_right = 10
 script = ExtResource( 6 )
 
 [node name="TextureRect" type="TextureRect" parent="ProgressoDeTextura"]
-anchor_left = 0.5
+anchor_left = 0.514
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.514
 anchor_bottom = 0.5
-margin_left = -89.0
-margin_top = -46.1196
-margin_right = 101.0
-margin_bottom = -15.1196
+margin_left = -94.88
+margin_top = -26.1196
+margin_right = 95.12
+margin_bottom = -2.11956
 texture = ExtResource( 1 )
 expand = true
-stretch_mode = 6
+stretch_mode = 1
 
 [node name="Sprite2" type="Sprite" parent="ProgressoDeTextura"]
 position = Vector2( 410.289, 33.6049 )
