@@ -13,10 +13,14 @@ func _ready() -> void:
 	Indicador.texture = textura_indicador[0]
 	PopUp.texture = textura_popup[0]
 	PopUp.visible = false
-	EnchenteEstadoDeJogo.connect('trocou_fase', self, "change_popup")
+	EnchenteEstadoDeJogo.connect('trocou_fase', self, "_change_all")
 	if barraprogresso.has_method("enviar_pos"):
 		var progressopos = barraprogresso.enviar_pos()
 		Indicador.rect_position = Vector2((progressopos.x + 250), (progressopos.y + 75))
+
+func _change_all(fase):
+	change_popup(fase)
+	change_indicador(fase)
 
 func change_popup(fase):
 	if fase > 3:
