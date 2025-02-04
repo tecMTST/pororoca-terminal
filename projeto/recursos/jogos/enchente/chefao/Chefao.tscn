@@ -159,10 +159,10 @@ tracks/0/keys = {
 [node name="Chefao" type="Spatial"]
 script = ExtResource( 2 )
 texturas_de_ataque = [ ExtResource( 68 ), ExtResource( 67 ) ]
-textura_entrada = ExtResource( 16 )
+textura_entrada_saida = ExtResource( 16 )
 
 [node name="OrigemObstaculos" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.251, 7.09421 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.251, -5 )
 
 [node name="Faixas" type="Node" parent="."]
 
@@ -191,6 +191,8 @@ autostart = true
 transform = Transform( 6.82751, 9.83676e-13, -3.12191e-07, 2.9844e-07, 1.30453e-14, 7.14211, 9.83676e-13, -6.82751, 1.36463e-14, 0.890812, 0.189654, 10.5328 )
 frames = SubResource( 3 )
 playing = true
+
+[node name="TweenOnda" type="Tween" parent="Sprites/Onda"]
 
 [node name="SpriteChefao" type="Sprite3D" parent="Sprites"]
 transform = Transform( 3.37658, 6.77889e-08, 0, -6.50722e-08, 3.24126, 0.946337, 1.89988e-08, -0.946337, 3.24126, 0.3177, 2.57017, 13.0411 )
