@@ -1,7 +1,7 @@
 extends Spatial
 
 export(Array, StreamTexture) var texturas_de_ataque
-export(StreamTexture) var textura_entrada
+export(StreamTexture) var textura_entrada_saida
 export var tamanho_balao_ataque_max: float = 0.85
 export var tamanho_balao_ataque_min: float = 0.3
 
@@ -43,7 +43,7 @@ var conteudo_total_modulo = loadJson(CAMINHO_MODULO)
 
 func _ready():
 	randomize()
-	boss_sprite.texture = textura_entrada
+	boss_sprite.texture = textura_entrada_saida
 	boss_sprite.visible = true
 	audio_stream_player_sfx.tocar_sfx("chefe-morte")
 	Animplayer.play("in_out")
@@ -187,8 +187,14 @@ func loadJson(nomejson):
 
 func _auto_destruir():
 	Animplayer.play_backwards("in_out")
-	$Sprites/SpriteChefao/tweenchefao.interpolate_property(boss_sprite, "translation", Vector3(boss_sprite.translation.x, boss_sprite.translation.y, boss_sprite.translation.z), Vector3(boss_sprite.translation.x, boss_sprite.translation.y - 100, boss_sprite.translation.z), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	yield(Animplayer, "animation_finished")
+	boss_sprite.texture = textura_entrada_saida
+	$Sprites/SpriteChefao/tweenchefao.interpolate_property(boss_sprite, "translation", Vector3(boss_sprite.translation.x, boss_sprite.translation.y, boss_sprite.translation.z), Vector3(boss_sprite.translation.x, boss_sprite.translation.y + 10, boss_sprite.translation.z), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	$Sprites/SpriteChefao/tweenchefao.start()
+	boss_sprite.visible = false
+	$Sprites/Onda/TweenOnda.interpolate_property($Sprites/Onda, "scale", $Sprites/Onda.scale, Vector3($Sprites/Onda.scale.x, 1, $Sprites/Onda.scale.z), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	$Sprites/Onda/TweenOnda.start()
+	$Sprites/Onda.visible = false
 	audio_stream_player_sfx.tocar_sfx("chefe-morte")
 	var derrota_timer = get_tree().create_timer(0.7)
 	yield(derrota_timer, "timeout")
