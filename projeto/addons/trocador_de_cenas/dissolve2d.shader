@@ -5,7 +5,7 @@ uniform float dissolve_amount : hint_range(0.0, 1.0) = 0.5;
 uniform vec4 fade_color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform bool fade = false;
 uniform bool inverted = false;
-uniform bool alpha_enabled = false;
+uniform bool alpha_enabled = true;
 
 void fragment() {
 	if (dissolve_amount < 0.0001 || dissolve_amount > 0.9999 || fade) {
