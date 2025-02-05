@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: nawarian/godot-ci:3.6-beta4
+      image: nawarian/godot-ci:3.6-stable
     steps:
       - name: Checkout
         uses: actions/checkout@v4
