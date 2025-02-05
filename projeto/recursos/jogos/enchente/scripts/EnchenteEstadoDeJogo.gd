@@ -2,6 +2,7 @@ extends Node
 
 signal iniciou()
 signal trocou_fase(fase)
+signal entrada_boss()
 signal nova_velocidade()
 signal dano_jogador(vida)
 

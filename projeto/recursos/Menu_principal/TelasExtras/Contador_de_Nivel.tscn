@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://elementos/UI/indicador_nivel_1.png" type="Texture" id=1]
 [ext_resource path="res://elementos/UI/pop_up_nivel_1.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://elementos/UI/pop_up_nivel_3.png" type="Texture" id=5]
 [ext_resource path="res://elementos/UI/inidicador_nivel_3.png" type="Texture" id=6]
 [ext_resource path="res://elementos/UI/indicador_nivel_2.png" type="Texture" id=7]
+[ext_resource path="res://elementos/audio/sfx/chefe/boss_alarm.mp3" type="AudioStream" id=8]
+[ext_resource path="res://elementos/audio/sfx/anuncio-level-1.mp3" type="AudioStream" id=9]
+[ext_resource path="res://elementos/audio/sfx/anuncio-level-3.mp3" type="AudioStream" id=10]
+[ext_resource path="res://elementos/audio/sfx/anuncio-level-2.mp3" type="AudioStream" id=11]
 
 [node name="Nivel" type="Control"]
 anchor_right = 1.0
@@ -14,6 +18,7 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 textura_indicador = [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ) ]
 textura_popup = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ) ]
+audio_fases = [ ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 8 ) ]
 
 [node name="Indicador" type="TextureRect" parent="."]
 pause_mode = 2
@@ -53,3 +58,6 @@ expand = true
 stretch_mode = 6
 
 [node name="PopUpTween" type="Tween" parent="PopUp"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SFX Menu"

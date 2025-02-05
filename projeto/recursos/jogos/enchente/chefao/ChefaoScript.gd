@@ -42,6 +42,8 @@ var CAMINHO_MODULO = 'res://recursos/jogos/enchente/chefao/modulos.json'
 var conteudo_total_modulo = loadJson(CAMINHO_MODULO)
 
 func _ready():
+	EnchenteEstadoDeJogo.emit_signal("entrada_boss")
+	yield(get_tree().create_timer(3.0),"timeout")
 	randomize()
 	boss_sprite.texture = textura_entrada_saida
 	boss_sprite.visible = true
