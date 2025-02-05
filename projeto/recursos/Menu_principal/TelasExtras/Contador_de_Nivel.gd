@@ -19,12 +19,12 @@ func _ready() -> void:
 		Indicador.rect_position = Vector2((progressopos.x + 250), (progressopos.y + 75))
 
 func _change_all(fase):
+	if fase > 3:
+		return
 	change_popup(fase)
 	change_indicador(fase)
 
 func change_popup(fase):
-	if fase > 3:
-		pass
 	PopUp.texture = textura_popup[fase - 1]
 	PopUp.visible = true
 	PopUp_tween.interpolate_property(PopUp, "rect_scale", Vector2(0,0), Vector2(1,1), 1, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
