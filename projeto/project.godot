@@ -201,6 +201,7 @@ config/icon="res://elementos/imagem/abertura/logo.png"
 [audio]
 
 default_bus_layout="res://elementos/audio/mixer/mixer.tres"
+general/ios/session_category=3
 
 [autoload]
 
