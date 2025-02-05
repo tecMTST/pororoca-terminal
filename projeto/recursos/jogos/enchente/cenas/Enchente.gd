@@ -30,6 +30,7 @@ func _ready():
 	$Contador.visible = true
 	$Contador/Animador.play("aproximar")
 	yield($Contador/Animador, 'animation_finished')
+	$Nivel.change_popup(1)
 
 	EnchenteEstadoDeJogo.reset()
 	EnchenteEstadoDeJogo.TemporizadorGlobal = $TempoDeJogo

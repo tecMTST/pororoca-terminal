@@ -210,6 +210,10 @@ TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
 SingletonOpcoesGlobais="*res://recursos/Menu_principal/SingletonOpcoesGlobais.gd"
 Salvamento="*res://addons/salvamento/Salvamento.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=720
