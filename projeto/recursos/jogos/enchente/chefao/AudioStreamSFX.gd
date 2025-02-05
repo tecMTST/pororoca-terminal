@@ -20,4 +20,5 @@ func tocar_sfx(tipo: String) -> void:
 	if sfx.has(tipo):
 		stop()
 		stream = sfx[tipo][randi() % sfx[tipo].size()]
+		stream.loop = false
 		play()

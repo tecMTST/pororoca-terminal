@@ -219,6 +219,7 @@ texture = ExtResource( 67 )
 wait_time = 3.0
 
 [node name="AudioStreamPlayerSFX" type="AudioStreamPlayer" parent="."]
+bus = "SFX Game"
 script = ExtResource( 66 )
 
 [connection signal="timeout" from="Timers/TimerAtaque" to="." method="_on_TimerAtaque_timeout"]
