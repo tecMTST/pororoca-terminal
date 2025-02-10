@@ -162,8 +162,11 @@ margin_bottom = 35.0
 theme = ExtResource( 7 )
 text = "0.000"
 
-[node name="Chuva" type="CPUParticles2D" parent="CanvasLayer"]
+[node name="EfeitoDano" parent="CanvasLayer" instance=ExtResource( 28 )]
+
+[node name="Chuva" type="CPUParticles2D" parent="."]
 pause_mode = 2
+visible = false
 modulate = Color( 1, 1, 1, 0.878431 )
 position = Vector2( 377, 19 )
 amount = 1000
@@ -177,8 +180,6 @@ spread = 0.0
 gravity = Vector2( 0, 300 )
 initial_velocity = 500.0
 color = Color( 0.882353, 0.882353, 0.882353, 0.431373 )
-
-[node name="EfeitoDano" parent="CanvasLayer" instance=ExtResource( 28 )]
 
 [node name="BarraDeProgresso" parent="." instance=ExtResource( 1 )]
 tempo = NodePath("../TempoDeJogo")

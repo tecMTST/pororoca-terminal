@@ -13,7 +13,7 @@ onready var agua = $Agua
 onready var audio_stream_bgm := $AudioStreamBGM
 onready var audio_stream_amb := $AudioStreamAMB
 onready var camera := $Camera as Camera
-onready var chuva := $CanvasLayer/Chuva
+onready var chuva := $Chuva
 onready var tamanho_tela = OS.get_screen_size()
 
 var _volume_atual = 999
@@ -40,6 +40,7 @@ func _ready():
 	EnchenteEstadoDeJogo.connect('trocou_fase', self, "_trocou_fase")
 	$ControladorDeObstaculos.iniciar()
 	player_lane_3d.controle_faixa_3d.connect('iniciou_movimento', camera, 'mover')
+	chuva.visible = true
 	audio_stream_bgm.play()
 
 func _process(_delta):
@@ -52,6 +53,7 @@ func _exit_tree() -> void:
 
 func _trocou_fase(fase):
 	if fase == 3:
+		chuva.visible = false
 		$ControladorDeObstaculos.parar()
 		$ChamadaDoBoss.iniciar()
 	audio_stream_bgm.mudar_musica(str(fase))
