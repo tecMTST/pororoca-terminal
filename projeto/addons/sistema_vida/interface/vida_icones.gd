@@ -37,4 +37,4 @@ func _vida_alterada(vida_alterada: Vida.VidaAlterada) -> void:
 func _process(delta):
 	if barraprogresso.has_method("enviar_pos"):
 		var progressopos = barraprogresso.enviar_pos()
-		self.rect_position = Vector2((progressopos.x + 250), (progressopos.y + 100))
+		self.rect_position = Vector2((progressopos.x + 220), (progressopos.y + 100))

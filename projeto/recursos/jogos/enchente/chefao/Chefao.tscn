@@ -188,7 +188,7 @@ autostart = true
 [node name="Sprites" type="Node" parent="."]
 
 [node name="Onda" type="AnimatedSprite3D" parent="Sprites"]
-transform = Transform( 6.82751, 9.83676e-13, -3.12191e-07, 2.9844e-07, 1.30453e-14, 7.14211, 9.83676e-13, -6.82751, 1.36463e-14, 0.890812, 0.189654, 10.5328 )
+transform = Transform( 5.43895, 7.83618e-13, -2.48698e-07, 2.37744e-07, 1.03922e-14, 5.68956, 7.83618e-13, -5.43895, 1.08709e-14, -0.147007, 0.189654, 13.5522 )
 frames = SubResource( 3 )
 playing = true
 

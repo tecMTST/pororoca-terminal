@@ -132,11 +132,11 @@ anchor_bottom = 1.0
 
 [node name="logo" type="TextureRect" parent="CenterContainer"]
 material = SubResource( 4 )
-margin_left = 235.0
-margin_top = 515.0
-margin_right = 485.0
-margin_bottom = 765.0
-rect_min_size = Vector2( 250, 250 )
+margin_left = 185.0
+margin_top = 465.0
+margin_right = 535.0
+margin_bottom = 815.0
+rect_min_size = Vector2( 350, 350 )
 rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 125, 125 )
 texture = ExtResource( 1 )

@@ -53,7 +53,7 @@ func _ready():
 	Animplayer.play("Idle")
 	_mudaModulo()
 	adicionar_lista('20_sec', 1)
-	timer_modulo.start(28)
+	timer_modulo.start(32)
 
 func adicionar_lista(modulo_atual, ataque):
 	randomize()
@@ -62,12 +62,12 @@ func adicionar_lista(modulo_atual, ataque):
 	if ModuloAtual == ModulosDisponiveis.sessenta_sec:
 		lista_posicoes += Id_conteudo_modulo.get(String(ataque) + String('_1'))
 	ultima_posicao = ataque
-	print(lista_posicoes)
+	#print(lista_posicoes)
 
 
 func _on_TimerModos_timeout():
 	timer_atual += 1
-	print(timer_atual)
+	#print(timer_atual)
 
 func _mudaModulo():
 	if timer_atual == 0:
@@ -96,7 +96,6 @@ func _realizar_acao():
 			_realizar_ataque()
 		ModulosDisponiveis.sessenta_sec:
 			adicionar_lista("60_sec", random_ataque)
-			_avisar_player()
 			_realizar_ataque()
 		ModulosDisponiveis.acabou:
 			_auto_destruir()
@@ -213,13 +212,15 @@ func loadJson(nomejson):
 
 func _auto_destruir():
 	Animplayer.play_backwards("in_out")
-	yield(Animplayer, "animation_finished")
-	boss_sprite.texture = textura_entrada_saida
-	$Sprites/SpriteChefao/tweenchefao.interpolate_property(boss_sprite, "translation", Vector3(boss_sprite.translation.x, boss_sprite.translation.y, boss_sprite.translation.z), Vector3(boss_sprite.translation.x, boss_sprite.translation.y + 10, boss_sprite.translation.z), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	$Sprites/SpriteChefao/tweenchefao.interpolate_property(boss_sprite, "translation", Vector3(boss_sprite.translation.x, boss_sprite.translation.y, boss_sprite.translation.z), Vector3(boss_sprite.translation.x, - 5, boss_sprite.translation.z), 2.6, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Sprites/SpriteChefao/tweenchefao.start()
+	yield(Animplayer, "animation_finished")
+	yield($Sprites/SpriteChefao/tweenchefao, "tween_completed")
+	boss_sprite.texture = textura_entrada_saida
 	boss_sprite.visible = false
-	$Sprites/Onda/TweenOnda.interpolate_property($Sprites/Onda, "scale", $Sprites/Onda.scale, Vector3($Sprites/Onda.scale.x, 1, $Sprites/Onda.scale.z), 0.6, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	$Sprites/Onda/TweenOnda.interpolate_property($Sprites/Onda, "scale", $Sprites/Onda.scale, Vector3($Sprites/Onda.scale.x, 1, $Sprites/Onda.scale.z), 1.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Sprites/Onda/TweenOnda.start()
+	yield($Sprites/Onda/TweenOnda, "tween_completed")
 	$Sprites/Onda.visible = false
 	audio_stream_player_sfx.tocar_sfx("chefe-morte")
 	var derrota_timer = get_tree().create_timer(0.7)
