@@ -5,7 +5,7 @@
 [ext_resource path="res://elementos/UI/botao_jogar_default.png" type="Texture" id=3]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/transparency_BG.png" type="Texture" id=4]
 [ext_resource path="res://elementos/audio/bgm/hub/menu-principal.mp3" type="AudioStream" id=5]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/logo.png" type="Texture" id=6]
+[ext_resource path="res://elementos/UI/logo_NTMTST.png" type="Texture" id=6]
 [ext_resource path="res://elementos/UI/logo_poroca_terminal.png" type="Texture" id=7]
 [ext_resource path="res://recursos/Menu_principal/menu_opcoes/Menu.gd" type="Script" id=8]
 [ext_resource path="res://recursos/jogos/enchente/cenas/Enchente.tscn" type="PackedScene" id=9]
@@ -81,6 +81,7 @@ margin_left = -360.0
 margin_top = -640.0
 margin_right = 360.0
 margin_bottom = 640.0
+rect_scale = Vector2( 1, 0.991314 )
 rect_pivot_offset = Vector2( -1026, 372 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -128,28 +129,30 @@ expand = true
 stretch_mode = 1
 
 [node name="Logo" type="TextureRect" parent="Background"]
-anchor_left = 0.5
-anchor_top = 0.088
-anchor_right = 0.5
-anchor_bottom = 0.088
-margin_left = -61.0
-margin_top = -61.64
-margin_right = 30.9998
-margin_bottom = 30.36
+anchor_left = 0.526
+anchor_top = 0.099
+anchor_right = 0.526
+anchor_bottom = 0.099
+margin_left = -106.72
+margin_top = -42.72
+margin_right = 53.28
+margin_bottom = 21.28
 rect_scale = Vector2( 1.33029, 1.33029 )
 texture = ExtResource( 6 )
+expand = true
 stretch_mode = 6
 
 [node name="Titulo" type="TextureRect" parent="Background"]
 anchor_left = 0.501
-anchor_top = 0.395
+anchor_top = 0.421
 anchor_right = 0.501
-anchor_bottom = 0.395
-margin_left = -316.72
-margin_top = -161.6
-margin_right = 159.28
-margin_bottom = 80.4
+anchor_bottom = 0.421
+margin_left = -267.72
+margin_top = -142.88
+margin_right = 273.28
+margin_bottom = 142.12
 rect_scale = Vector2( 1.33029, 1.33029 )
+rect_pivot_offset = Vector2( 279.638, 142.826 )
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
@@ -204,6 +207,9 @@ margin_left = -360.0
 margin_top = -640.0
 margin_right = 360.0
 margin_bottom = 640.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="button_down" from="Buttons/Btn_Jogar" to="." method="_on_Btn_Jogar_button_down"]
 [connection signal="button_up" from="Buttons/Btn_Jogar" to="." method="_on_Jogar_button_up"]
